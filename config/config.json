@@ -1,0 +1,16 @@
+{
+    "app_name": "RAMGuard",
+    "version": "1.0.0",
+    "theme": "dark",
+    "monitoring_interval_seconds": 3,
+    "memory_warning_threshold_percent": 80,
+    "memory_critical_threshold_percent": 90,
+    "start_with_windows": false,
+    "show_notifications": true,
+    "default_optimization_mode": "SAFE",
+    "min_memory_to_recommend_mb": 100,
+    "max_history_entries": 100,
+    "custom_protected_processes": [],
+    "auto_refresh_process_list": true,
+    "process_list_refresh_interval_seconds": 5
+}
