@@ -1,0 +1,97 @@
+2026-09-01 10:25:10 | DEBUG    | RAMGuard.Config | Config loaded from D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\config\config.json
+2026-09-01 10:25:10 | INFO     | RAMGuard | ============================================================
+2026-09-01 10:25:10 | INFO     | RAMGuard | RAMGuard starting up
+2026-09-01 10:25:10 | INFO     | RAMGuard | Python: 3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]
+2026-09-01 10:25:10 | INFO     | RAMGuard | Platform: win32
+2026-09-01 10:25:10 | INFO     | RAMGuard | ============================================================
+2026-09-01 10:25:16 | INFO     | RAMGuard | Initialising database…
+2026-09-01 10:25:16 | INFO     | RAMGuard.Database | Database initialised at D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\data\ramguard.db
+2026-09-01 10:25:16 | INFO     | RAMGuard | Loading configuration…
+2026-09-01 10:25:16 | DEBUG    | RAMGuard.Config | Config loaded from D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\config\config.json
+2026-09-01 10:25:16 | INFO     | RAMGuard | Building main window…
+2026-09-01 10:25:16 | INFO     | RAMGuard.SafetyManager | ProcessSafetyManager initialised (own PID=14140)
+2026-09-01 10:25:16 | INFO     | RAMGuard.MemoryMonitor | MemoryMonitor initialised
+2026-09-01 10:25:17 | INFO     | RAMGuard.StartupManager | Loaded 9 startup entries
+2026-09-01 10:25:17 | INFO     | RAMGuard.MemoryMonitor | MemoryMonitor initialised
+2026-09-01 10:25:17 | DEBUG    | RAMGuard.Workers | MonitorWorker started (interval=3s)
+2026-09-01 10:25:17 | INFO     | RAMGuard | RAMGuard started successfully.
+2026-09-01 10:25:24 | DEBUG    | RAMGuard.ProcessScanner | Scanned 257 processes (threshold=0.5 MB)
+2026-09-01 10:25:24 | DEBUG    | RAMGuard.MainWindow | Process list updated: 257 processes
+2026-09-01 10:25:38 | DEBUG    | RAMGuard.ProcessScanner | Scanned 257 processes (threshold=0.5 MB)
+2026-09-01 10:25:38 | DEBUG    | RAMGuard.MainWindow | Process list updated: 257 processes
+2026-09-01 10:25:40 | INFO     | RAMGuard.Optimizer | Starting SAFE optimization for 4 process(es).
+2026-09-01 10:25:40 | INFO     | RAMGuard.Optimizer | Closing 'chrome.exe' (PID 16604) gracefully…
+2026-09-01 10:25:41 | INFO     | RAMGuard.Optimizer | ✓ 'chrome.exe' closed successfully.
+2026-09-01 10:25:41 | INFO     | RAMGuard.Optimizer | ℹ 'chrome.exe' (PID 16860) already exited.
+2026-09-01 10:25:41 | INFO     | RAMGuard.Optimizer | ℹ 'chrome.exe' (PID 12408) already exited.
+2026-09-01 10:25:41 | INFO     | RAMGuard.Optimizer | ℹ 'chrome.exe' (PID 14116) already exited.
+2026-09-01 10:25:41 | INFO     | RAMGuard.Optimizer | Waiting 1.5s for memory to settle…
+2026-09-01 10:25:42 | INFO     | RAMGuard.Optimizer | Optimization complete: 4 closed, 0 failed, ~709 MB freed.
+2026-09-01 10:25:42 | INFO     | RAMGuard.Database | Saved optimization session #4
+2026-09-01 10:25:50 | DEBUG    | RAMGuard.ProcessScanner | Scanned 247 processes (threshold=0.5 MB)
+2026-09-01 10:25:50 | DEBUG    | RAMGuard.MainWindow | Process list updated: 247 processes
+2026-09-01 10:25:52 | DEBUG    | RAMGuard.ProcessScanner | Scanned 248 processes (threshold=0.5 MB)
+2026-09-01 10:25:52 | DEBUG    | RAMGuard.MainWindow | Process list updated: 248 processes
+2026-09-01 10:26:05 | DEBUG    | RAMGuard.ProcessScanner | Scanned 248 processes (threshold=0.5 MB)
+2026-09-01 10:26:05 | DEBUG    | RAMGuard.MainWindow | Process list updated: 248 processes
+2026-09-01 10:26:08 | DEBUG    | RAMGuard.ProcessScanner | Scanned 250 processes (threshold=0.5 MB)
+2026-09-01 10:26:08 | DEBUG    | RAMGuard.MainWindow | Process list updated: 250 processes
+2026-09-01 10:26:19 | DEBUG    | RAMGuard.ProcessScanner | Scanned 268 processes (threshold=0.5 MB)
+2026-09-01 10:26:19 | DEBUG    | RAMGuard.MainWindow | Process list updated: 268 processes
+2026-09-01 10:26:22 | DEBUG    | RAMGuard.ProcessScanner | Scanned 267 processes (threshold=0.5 MB)
+2026-09-01 10:26:22 | DEBUG    | RAMGuard.MainWindow | Process list updated: 267 processes
+2026-09-01 10:26:33 | DEBUG    | RAMGuard.ProcessScanner | Scanned 267 processes (threshold=0.5 MB)
+2026-09-01 10:26:33 | DEBUG    | RAMGuard.MainWindow | Process list updated: 267 processes
+2026-09-01 10:26:36 | DEBUG    | RAMGuard.ProcessScanner | Scanned 267 processes (threshold=0.5 MB)
+2026-09-01 10:26:36 | DEBUG    | RAMGuard.MainWindow | Process list updated: 267 processes
+2026-09-01 10:26:51 | DEBUG    | RAMGuard.ProcessScanner | Scanned 266 processes (threshold=0.5 MB)
+2026-09-01 10:26:51 | DEBUG    | RAMGuard.MainWindow | Process list updated: 266 processes
+2026-09-01 10:26:53 | DEBUG    | RAMGuard.ProcessScanner | Scanned 264 processes (threshold=0.5 MB)
+2026-09-01 10:26:53 | DEBUG    | RAMGuard.MainWindow | Process list updated: 264 processes
+2026-09-01 10:27:10 | DEBUG    | RAMGuard.ProcessScanner | Scanned 264 processes (threshold=0.5 MB)
+2026-09-01 10:27:10 | DEBUG    | RAMGuard.MainWindow | Process list updated: 264 processes
+2026-09-01 10:27:12 | DEBUG    | RAMGuard.ProcessScanner | Scanned 264 processes (threshold=0.5 MB)
+2026-09-01 10:27:13 | DEBUG    | RAMGuard.MainWindow | Process list updated: 264 processes
+2026-09-01 10:27:27 | DEBUG    | RAMGuard.ProcessScanner | Scanned 267 processes (threshold=0.5 MB)
+2026-09-01 10:27:27 | DEBUG    | RAMGuard.MainWindow | Process list updated: 267 processes
+2026-09-01 10:27:29 | DEBUG    | RAMGuard.ProcessScanner | Scanned 270 processes (threshold=0.5 MB)
+2026-09-01 10:27:29 | DEBUG    | RAMGuard.MainWindow | Process list updated: 270 processes
+2026-09-01 10:27:36 | INFO     | RAMGuard.MainWindow | RAMGuard shutting down…
+2026-09-01 10:27:44 | DEBUG    | RAMGuard.ProcessScanner | Scanned 271 processes (threshold=0.5 MB)
+2026-09-01 10:27:46 | DEBUG    | RAMGuard.ProcessScanner | Scanned 271 processes (threshold=0.5 MB)
+2026-09-01 10:55:42 | DEBUG    | RAMGuard.Config | Config loaded from D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\config\config.json
+2026-09-01 10:55:42 | INFO     | RAMGuard | ============================================================
+2026-09-01 10:55:42 | INFO     | RAMGuard | RAMGuard starting up
+2026-09-01 10:55:42 | INFO     | RAMGuard | Python: 3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]
+2026-09-01 10:55:42 | INFO     | RAMGuard | Platform: win32
+2026-09-01 10:55:42 | INFO     | RAMGuard | ============================================================
+2026-09-01 10:55:45 | INFO     | RAMGuard | Initialising database…
+2026-09-01 10:55:45 | INFO     | RAMGuard.Database | Database initialised at D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\data\ramguard.db
+2026-09-01 10:55:45 | INFO     | RAMGuard | Loading configuration…
+2026-09-01 10:55:45 | DEBUG    | RAMGuard.Config | Config loaded from D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\config\config.json
+2026-09-01 10:55:45 | INFO     | RAMGuard | Building main window…
+2026-09-01 10:55:45 | INFO     | RAMGuard.SafetyManager | ProcessSafetyManager initialised (own PID=11432)
+2026-09-01 10:55:45 | INFO     | RAMGuard.MemoryMonitor | MemoryMonitor initialised
+2026-09-01 10:55:45 | INFO     | RAMGuard.StartupManager | Loaded 9 startup entries
+2026-09-01 10:55:45 | INFO     | RAMGuard.MemoryMonitor | MemoryMonitor initialised
+2026-09-01 10:55:45 | DEBUG    | RAMGuard.Workers | MonitorWorker started (interval=3s)
+2026-09-01 10:55:45 | INFO     | RAMGuard | RAMGuard started successfully.
+2026-09-01 10:55:53 | DEBUG    | RAMGuard.ProcessScanner | Scanned 256 processes (threshold=0.5 MB)
+2026-09-01 10:55:53 | DEBUG    | RAMGuard.MainWindow | Process list updated: 256 processes
+2026-09-01 10:56:04 | DEBUG    | RAMGuard.ProcessScanner | Scanned 255 processes (threshold=0.5 MB)
+2026-09-01 10:56:04 | DEBUG    | RAMGuard.MainWindow | Process list updated: 255 processes
+2026-09-01 10:56:15 | DEBUG    | RAMGuard.ProcessScanner | Scanned 253 processes (threshold=0.5 MB)
+2026-09-01 10:56:15 | INFO     | RAMGuard.Optimizer | Starting SAFE optimization for 2 process(es).
+2026-09-01 10:56:15 | INFO     | RAMGuard.Optimizer | Closing 'Antigravity.exe' (PID 10876) gracefully…
+2026-09-01 10:56:15 | DEBUG    | RAMGuard.MainWindow | Process list updated: 253 processes
+2026-09-01 10:56:15 | INFO     | RAMGuard.Optimizer | ✓ 'Antigravity.exe' closed successfully.
+2026-09-01 10:56:15 | INFO     | RAMGuard.Optimizer | Closing 'Antigravity.exe' (PID 7396) gracefully…
+2026-09-01 10:56:15 | INFO     | RAMGuard.Optimizer | ✓ 'Antigravity.exe' closed successfully.
+2026-09-01 10:56:15 | INFO     | RAMGuard.Optimizer | Waiting 1.5s for memory to settle…
+2026-09-01 10:56:17 | INFO     | RAMGuard.Optimizer | Optimization complete: 2 closed, 0 failed, ~424 MB freed.
+2026-09-01 10:56:17 | INFO     | RAMGuard.Database | Saved optimization session #5
+2026-09-01 10:56:25 | DEBUG    | RAMGuard.ProcessScanner | Scanned 247 processes (threshold=0.5 MB)
+2026-09-01 10:56:25 | DEBUG    | RAMGuard.MainWindow | Process list updated: 247 processes
+2026-09-01 10:56:28 | DEBUG    | RAMGuard.ProcessScanner | Scanned 247 processes (threshold=0.5 MB)
+2026-09-01 10:56:28 | DEBUG    | RAMGuard.MainWindow | Process list updated: 247 processes
+2026-09-01 10:56:29 | INFO     | RAMGuard.MainWindow | RAMGuard shutting down…
