@@ -32,13 +32,13 @@ logger = setup_logger("RAMGuard")
 def show_splash(app: QApplication) -> QSplashScreen:
     """Show a minimal branded splash screen while the app loads."""
     pixmap = QPixmap(480, 200)
-    pixmap.fill(QColor("#161b22"))
+    pixmap.fill(QColor("#060d17"))
 
     splash = QSplashScreen(pixmap, Qt.WindowType.WindowStaysOnTopHint)
     splash.showMessage(
         "🛡  RAMGuard\nSmart & Safe Windows Memory Optimization\n\nInitializing…",
         Qt.AlignmentFlag.AlignCenter,
-        QColor("#58a6ff"),
+        QColor("#38bdf8"),
     )
     splash.show()
     app.processEvents()
