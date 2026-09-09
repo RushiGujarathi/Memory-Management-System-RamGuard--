@@ -275,10 +275,10 @@ class StatCard(QFrame):
 
         self._title_lbl = QLabel(title)
         self._title_lbl.setStyleSheet("""
-            color: #8c9eb5;
-            font-size: 10px;
+            color: #cbd5e1;
+            font-size: 11px;
             font-weight: 700;
-            letter-spacing: 0.8px;
+            letter-spacing: 0.5px;
         """)
 
         self._badge_lbl = QLabel(badge_text)
@@ -298,7 +298,7 @@ class StatCard(QFrame):
         self._val_lbl.setStyleSheet("""
             color: #ffffff;
             font-size: 26px;
-            font-weight: 700;
+            font-weight: 800;
             min-width: 65px;
         """)
         bottom_row.addWidget(self._val_lbl)
@@ -315,12 +315,12 @@ class StatCard(QFrame):
         self._badge_lbl.setText(text)
         self._badge_lbl.setVisible(True)
         self._badge_lbl.setStyleSheet(f"""
-            background-color: {color}20;
+            background-color: {color}25;
             color: {color};
-            border: 1px solid {color}40;
+            border: 1px solid {color}60;
             border-radius: 9px;
-            padding: 2px 7px;
-            font-size: 10px;
+            padding: 2px 8px;
+            font-size: 11px;
             font-weight: 700;
         """)
 
@@ -398,18 +398,32 @@ class SystemStatusCard(QFrame):
         self._val_lbl.setStyleSheet(f"color:{color};font-size:15px;font-weight:700;")
 
         is_critical = "critical" in text.lower() or "high" in text.lower()
-        border_color = f"rgba(239, 68, 68, 0.45)" if is_critical else f"rgba(59, 130, 246, 0.25)"
-        self.setStyleSheet(f"""
-            QFrame#status_card {{
-                background-color: #0b1526;
-                border: 1px solid {border_color};
-                border-radius: 14px;
-            }}
-            QFrame#status_card:hover {{
-                border-color: {color};
-                background-color: #0e182c;
-            }}
-        """)
+        if is_critical:
+            self._icon_lbl.setPixmap(IconHelper.create_warning_icon(32, color="#ef4444", bg_color="#381419"))
+            self.setStyleSheet("""
+                QFrame#status_card {
+                    background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 rgba(239, 68, 68, 0.22), stop:1 #1c0e14);
+                    border: 1.5px solid rgba(239, 68, 68, 0.6);
+                    border-radius: 14px;
+                }
+                QFrame#status_card:hover {
+                    background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 rgba(239, 68, 68, 0.32), stop:1 #24111a);
+                    border: 1.5px solid #ef4444;
+                }
+            """)
+        else:
+            self._icon_lbl.setPixmap(IconHelper.create_shield_small(32, color="#10b981", bg_color="#0d2b20"))
+            self.setStyleSheet("""
+                QFrame#status_card {
+                    background-color: #0b1526;
+                    border: 1px solid rgba(59, 130, 246, 0.2);
+                    border-radius: 14px;
+                }
+                QFrame#status_card:hover {
+                    border-color: #10b981;
+                    background-color: #0e1c34;
+                }
+            """)
 
 
 class ProgressBarRow(QWidget):
@@ -424,12 +438,12 @@ class ProgressBarRow(QWidget):
         layout.setSpacing(12)
 
         self._lbl = QLabel(label)
-        self._lbl.setStyleSheet("color: #8c9eb5; font-size: 12px; font-weight: 500; min-width: 110px;")
+        self._lbl.setStyleSheet("color: #cbd5e1; font-size: 12px; font-weight: 600; min-width: 110px;")
 
         self._bar = ProgressBarWidget(bar_color, height=12)
 
         self._val_lbl = QLabel("—")
-        self._val_lbl.setStyleSheet("color: #ffffff; font-size: 12px; font-weight: 600; min-width: 55px;")
+        self._val_lbl.setStyleSheet("color: #ffffff; font-size: 12px; font-weight: 700; min-width: 55px;")
         self._val_lbl.setAlignment(Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignVCenter)
 
         layout.addWidget(self._lbl)
@@ -468,14 +482,12 @@ class FeatureCard(QFrame):
 
         self.setStyleSheet(f"""
             QFrame#feature_card {{
-                background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
-                                            stop:0 {accent_color}18, stop:1 #0b1526);
+                background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 {accent_color}18, stop:1 #0b1526);
                 border: 1px solid {accent_color}35;
                 border-radius: 14px;
             }}
             QFrame#feature_card:hover {{
-                background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
-                                            stop:0 {accent_color}28, stop:1 #0e1c34);
+                background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 {accent_color}2a, stop:1 #0e1c34);
                 border: 1px solid {accent_color}88;
             }}
         """)
@@ -489,10 +501,10 @@ class FeatureCard(QFrame):
         self._icon.setFixedSize(30, 30)
 
         self._title = QLabel(title)
-        self._title.setStyleSheet("color:#ffffff; font-size:13px; font-weight:700;")
+        self._title.setStyleSheet("color:#ffffff; font-size:14px; font-weight:700;")
 
         self._desc = QLabel(desc)
-        self._desc.setStyleSheet("color:#8c9eb5; font-size:11px; line-height:1.3;")
+        self._desc.setStyleSheet("color:#cbd5e1; font-size:11px; line-height:1.3;")
         self._desc.setWordWrap(True)
 
         bottom_row = QHBoxLayout()

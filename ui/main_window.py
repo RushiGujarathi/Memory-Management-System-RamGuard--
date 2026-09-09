@@ -415,7 +415,7 @@ class MainWindow(QMainWindow):
         # Update top title bar status pill
         status_map = {
             "NORMAL": ("System Healthy", "#10b981"),
-            "MODERATE": ("Moderate Usage", "#f59e0b"),
+            "MODERATE": ("System Healthy", "#10b981"),
             "HIGH": ("High Memory Usage", "#f97316"),
             "CRITICAL": ("Critical — Optimize Now!", "#ef4444"),
         }

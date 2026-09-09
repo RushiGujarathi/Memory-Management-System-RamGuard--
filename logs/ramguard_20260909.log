@@ -657,3 +657,366 @@
 2026-09-09 16:37:49 | DEBUG    | RAMGuard.ProcessScanner | Scanned 230 processes (threshold=0.5 MB)
 2026-09-09 16:37:52 | DEBUG    | RAMGuard.MainWindow | Process list updated: 230 processes
 2026-09-09 16:38:02 | DEBUG    | RAMGuard.ProcessScanner | Scanned 231 processes (threshold=0.5 MB)
+2026-09-09 16:41:00 | DEBUG    | RAMGuard.Config | Config loaded from D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\config\config.json
+2026-09-09 16:41:00 | INFO     | RAMGuard | ============================================================
+2026-09-09 16:41:00 | INFO     | RAMGuard | RAMGuard starting up
+2026-09-09 16:41:00 | INFO     | RAMGuard | Python: 3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]
+2026-09-09 16:41:00 | INFO     | RAMGuard | Platform: win32
+2026-09-09 16:41:00 | INFO     | RAMGuard | ============================================================
+2026-09-09 16:41:02 | INFO     | RAMGuard | Initialising database…
+2026-09-09 16:41:02 | INFO     | RAMGuard.Database | Database initialised at D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\data\ramguard.db
+2026-09-09 16:41:02 | INFO     | RAMGuard | Loading configuration…
+2026-09-09 16:41:02 | DEBUG    | RAMGuard.Config | Config loaded from D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\config\config.json
+2026-09-09 16:41:02 | INFO     | RAMGuard | Building main window…
+2026-09-09 16:41:02 | INFO     | RAMGuard.SafetyManager | ProcessSafetyManager initialised (own PID=7700)
+2026-09-09 16:41:02 | INFO     | RAMGuard.MemoryMonitor | MemoryMonitor initialised
+2026-09-09 16:41:03 | CRITICAL | RAMGuard | Fatal error during startup: IconHelper.create_lightning_icon() got an unexpected keyword argument 'bg_color'
+Traceback (most recent call last):
+  File "D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\main.py", line 77, in main
+    window = MainWindow(config)
+             ^^^^^^^^^^^^^^^^^^
+  File "D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\ui\main_window.py", line 175, in __init__
+    self._build_ui()
+  File "D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\ui\main_window.py", line 209, in _build_ui
+    self._dash_page = DashboardPage(
+                      ^^^^^^^^^^^^^^
+  File "D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\ui\dashboard.py", line 40, in __init__
+    self._build_ui()
+  File "D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\ui\dashboard.py", line 291, in _build_ui
+    icon_pixmap=IconHelper.create_lightning_icon(30, color="#2563eb", bg_color="#0c1f3d"),
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: IconHelper.create_lightning_icon() got an unexpected keyword argument 'bg_color'
+2026-09-09 16:41:19 | DEBUG    | RAMGuard.Config | Config loaded from D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\config\config.json
+2026-09-09 16:41:19 | INFO     | RAMGuard | ============================================================
+2026-09-09 16:41:19 | INFO     | RAMGuard | RAMGuard starting up
+2026-09-09 16:41:19 | INFO     | RAMGuard | Python: 3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]
+2026-09-09 16:41:19 | INFO     | RAMGuard | Platform: win32
+2026-09-09 16:41:19 | INFO     | RAMGuard | ============================================================
+2026-09-09 16:41:21 | INFO     | RAMGuard | Initialising database…
+2026-09-09 16:41:21 | INFO     | RAMGuard.Database | Database initialised at D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\data\ramguard.db
+2026-09-09 16:41:21 | INFO     | RAMGuard | Loading configuration…
+2026-09-09 16:41:21 | DEBUG    | RAMGuard.Config | Config loaded from D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\config\config.json
+2026-09-09 16:41:21 | INFO     | RAMGuard | Building main window…
+2026-09-09 16:41:21 | INFO     | RAMGuard.SafetyManager | ProcessSafetyManager initialised (own PID=17244)
+2026-09-09 16:41:21 | INFO     | RAMGuard.MemoryMonitor | MemoryMonitor initialised
+2026-09-09 16:41:21 | CRITICAL | RAMGuard | Fatal error during startup: IconHelper.create_lightning_icon() got an unexpected keyword argument 'bg_color'
+Traceback (most recent call last):
+  File "D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\main.py", line 77, in main
+    window = MainWindow(config)
+             ^^^^^^^^^^^^^^^^^^
+  File "D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\ui\main_window.py", line 175, in __init__
+    self._build_ui()
+  File "D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\ui\main_window.py", line 209, in _build_ui
+    self._dash_page = DashboardPage(
+                      ^^^^^^^^^^^^^^
+  File "D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\ui\dashboard.py", line 40, in __init__
+    self._build_ui()
+  File "D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\ui\dashboard.py", line 291, in _build_ui
+    icon_pixmap=IconHelper.create_lightning_icon(30, color="#2563eb", bg_color="#0c1f3d"),
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: IconHelper.create_lightning_icon() got an unexpected keyword argument 'bg_color'
+2026-09-09 16:41:33 | DEBUG    | RAMGuard.Config | Config loaded from D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\config\config.json
+2026-09-09 16:41:33 | INFO     | RAMGuard | ============================================================
+2026-09-09 16:41:33 | INFO     | RAMGuard | RAMGuard starting up
+2026-09-09 16:41:33 | INFO     | RAMGuard | Python: 3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]
+2026-09-09 16:41:33 | INFO     | RAMGuard | Platform: win32
+2026-09-09 16:41:33 | INFO     | RAMGuard | ============================================================
+2026-09-09 16:41:35 | INFO     | RAMGuard | Initialising database…
+2026-09-09 16:41:35 | INFO     | RAMGuard.Database | Database initialised at D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\data\ramguard.db
+2026-09-09 16:41:35 | INFO     | RAMGuard | Loading configuration…
+2026-09-09 16:41:35 | DEBUG    | RAMGuard.Config | Config loaded from D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\config\config.json
+2026-09-09 16:41:35 | INFO     | RAMGuard | Building main window…
+2026-09-09 16:41:35 | INFO     | RAMGuard.SafetyManager | ProcessSafetyManager initialised (own PID=18724)
+2026-09-09 16:41:35 | INFO     | RAMGuard.MemoryMonitor | MemoryMonitor initialised
+2026-09-09 16:41:35 | CRITICAL | RAMGuard | Fatal error during startup: IconHelper.create_lightning_icon() got an unexpected keyword argument 'bg_color'
+Traceback (most recent call last):
+  File "D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\main.py", line 77, in main
+    window = MainWindow(config)
+             ^^^^^^^^^^^^^^^^^^
+  File "D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\ui\main_window.py", line 175, in __init__
+    self._build_ui()
+  File "D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\ui\main_window.py", line 209, in _build_ui
+    self._dash_page = DashboardPage(
+                      ^^^^^^^^^^^^^^
+  File "D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\ui\dashboard.py", line 40, in __init__
+    self._build_ui()
+  File "D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\ui\dashboard.py", line 291, in _build_ui
+    icon_pixmap=IconHelper.create_lightning_icon(30, color="#2563eb", bg_color="#0c1f3d"),
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: IconHelper.create_lightning_icon() got an unexpected keyword argument 'bg_color'
+2026-09-09 16:42:27 | DEBUG    | RAMGuard.Config | Config loaded from D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\config\config.json
+2026-09-09 16:42:27 | INFO     | RAMGuard | ============================================================
+2026-09-09 16:42:27 | INFO     | RAMGuard | RAMGuard starting up
+2026-09-09 16:42:27 | INFO     | RAMGuard | Python: 3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]
+2026-09-09 16:42:27 | INFO     | RAMGuard | Platform: win32
+2026-09-09 16:42:27 | INFO     | RAMGuard | ============================================================
+2026-09-09 16:42:29 | INFO     | RAMGuard | Initialising database…
+2026-09-09 16:42:29 | INFO     | RAMGuard.Database | Database initialised at D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\data\ramguard.db
+2026-09-09 16:42:29 | INFO     | RAMGuard | Loading configuration…
+2026-09-09 16:42:29 | DEBUG    | RAMGuard.Config | Config loaded from D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\config\config.json
+2026-09-09 16:42:29 | INFO     | RAMGuard | Building main window…
+2026-09-09 16:42:29 | INFO     | RAMGuard.SafetyManager | ProcessSafetyManager initialised (own PID=8580)
+2026-09-09 16:42:29 | INFO     | RAMGuard.MemoryMonitor | MemoryMonitor initialised
+2026-09-09 16:42:29 | CRITICAL | RAMGuard | Fatal error during startup: IconHelper.create_lightning_icon() got an unexpected keyword argument 'bg_color'
+Traceback (most recent call last):
+  File "D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\main.py", line 77, in main
+    window = MainWindow(config)
+             ^^^^^^^^^^^^^^^^^^
+  File "D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\ui\main_window.py", line 175, in __init__
+    self._build_ui()
+  File "D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\ui\main_window.py", line 209, in _build_ui
+    self._dash_page = DashboardPage(
+                      ^^^^^^^^^^^^^^
+  File "D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\ui\dashboard.py", line 40, in __init__
+    self._build_ui()
+  File "D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\ui\dashboard.py", line 291, in _build_ui
+    icon_pixmap=IconHelper.create_lightning_icon(30, color="#2563eb", bg_color="#0c1f3d"),
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: IconHelper.create_lightning_icon() got an unexpected keyword argument 'bg_color'
+2026-09-09 16:43:09 | DEBUG    | RAMGuard.Config | Config loaded from D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\config\config.json
+2026-09-09 16:43:09 | INFO     | RAMGuard | ============================================================
+2026-09-09 16:43:09 | INFO     | RAMGuard | RAMGuard starting up
+2026-09-09 16:43:09 | INFO     | RAMGuard | Python: 3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]
+2026-09-09 16:43:09 | INFO     | RAMGuard | Platform: win32
+2026-09-09 16:43:09 | INFO     | RAMGuard | ============================================================
+2026-09-09 16:43:11 | INFO     | RAMGuard | Initialising database…
+2026-09-09 16:43:11 | INFO     | RAMGuard.Database | Database initialised at D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\data\ramguard.db
+2026-09-09 16:43:11 | INFO     | RAMGuard | Loading configuration…
+2026-09-09 16:43:11 | DEBUG    | RAMGuard.Config | Config loaded from D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\config\config.json
+2026-09-09 16:43:11 | INFO     | RAMGuard | Building main window…
+2026-09-09 16:43:11 | INFO     | RAMGuard.SafetyManager | ProcessSafetyManager initialised (own PID=12328)
+2026-09-09 16:43:11 | INFO     | RAMGuard.MemoryMonitor | MemoryMonitor initialised
+2026-09-09 16:43:11 | CRITICAL | RAMGuard | Fatal error during startup: IconHelper.create_lightning_icon() got an unexpected keyword argument 'bg_color'
+Traceback (most recent call last):
+  File "D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\main.py", line 77, in main
+    window = MainWindow(config)
+             ^^^^^^^^^^^^^^^^^^
+  File "D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\ui\main_window.py", line 175, in __init__
+    self._build_ui()
+  File "D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\ui\main_window.py", line 209, in _build_ui
+    self._dash_page = DashboardPage(
+                      ^^^^^^^^^^^^^^
+  File "D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\ui\dashboard.py", line 40, in __init__
+    self._build_ui()
+  File "D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\ui\dashboard.py", line 291, in _build_ui
+    icon_pixmap=IconHelper.create_lightning_icon(30, color="#2563eb", bg_color="#0c1f3d"),
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: IconHelper.create_lightning_icon() got an unexpected keyword argument 'bg_color'
+2026-09-09 16:44:44 | DEBUG    | RAMGuard.Config | Config loaded from D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\config\config.json
+2026-09-09 16:44:44 | INFO     | RAMGuard | ============================================================
+2026-09-09 16:44:44 | INFO     | RAMGuard | RAMGuard starting up
+2026-09-09 16:44:44 | INFO     | RAMGuard | Python: 3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]
+2026-09-09 16:44:44 | INFO     | RAMGuard | Platform: win32
+2026-09-09 16:44:44 | INFO     | RAMGuard | ============================================================
+2026-09-09 16:44:46 | INFO     | RAMGuard | Initialising database…
+2026-09-09 16:44:46 | INFO     | RAMGuard.Database | Database initialised at D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\data\ramguard.db
+2026-09-09 16:44:46 | INFO     | RAMGuard | Loading configuration…
+2026-09-09 16:44:46 | DEBUG    | RAMGuard.Config | Config loaded from D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\config\config.json
+2026-09-09 16:44:46 | INFO     | RAMGuard | Building main window…
+2026-09-09 16:44:46 | INFO     | RAMGuard.SafetyManager | ProcessSafetyManager initialised (own PID=12068)
+2026-09-09 16:44:46 | INFO     | RAMGuard.MemoryMonitor | MemoryMonitor initialised
+2026-09-09 16:44:47 | INFO     | RAMGuard.StartupManager | Loaded 9 startup entries
+2026-09-09 16:44:47 | INFO     | RAMGuard.MemoryMonitor | MemoryMonitor initialised
+2026-09-09 16:44:47 | DEBUG    | RAMGuard.Workers | MonitorWorker started (interval=3s)
+2026-09-09 16:44:47 | INFO     | RAMGuard | RAMGuard started successfully.
+2026-09-09 16:44:52 | DEBUG    | RAMGuard.ProcessScanner | Scanned 231 processes (threshold=0.5 MB)
+2026-09-09 16:44:54 | DEBUG    | RAMGuard.MainWindow | Process list updated: 231 processes
+2026-09-09 16:45:04 | DEBUG    | RAMGuard.ProcessScanner | Scanned 231 processes (threshold=0.5 MB)
+2026-09-09 16:45:06 | DEBUG    | RAMGuard.MainWindow | Process list updated: 231 processes
+2026-09-09 16:45:16 | DEBUG    | RAMGuard.ProcessScanner | Scanned 231 processes (threshold=0.5 MB)
+2026-09-09 16:45:20 | DEBUG    | RAMGuard.MainWindow | Process list updated: 231 processes
+2026-09-09 16:45:30 | DEBUG    | RAMGuard.ProcessScanner | Scanned 238 processes (threshold=0.5 MB)
+2026-09-09 16:45:34 | DEBUG    | RAMGuard.MainWindow | Process list updated: 238 processes
+2026-09-09 16:45:45 | DEBUG    | RAMGuard.ProcessScanner | Scanned 238 processes (threshold=0.5 MB)
+2026-09-09 16:45:48 | DEBUG    | RAMGuard.MainWindow | Process list updated: 238 processes
+2026-09-09 16:46:00 | DEBUG    | RAMGuard.ProcessScanner | Scanned 238 processes (threshold=0.5 MB)
+2026-09-09 16:46:03 | DEBUG    | RAMGuard.MainWindow | Process list updated: 238 processes
+2026-09-09 16:46:14 | DEBUG    | RAMGuard.ProcessScanner | Scanned 238 processes (threshold=0.5 MB)
+2026-09-09 16:46:17 | DEBUG    | RAMGuard.MainWindow | Process list updated: 238 processes
+2026-09-09 16:46:27 | DEBUG    | RAMGuard.ProcessScanner | Scanned 238 processes (threshold=0.5 MB)
+2026-09-09 16:46:30 | DEBUG    | RAMGuard.MainWindow | Process list updated: 238 processes
+2026-09-09 16:46:41 | DEBUG    | RAMGuard.ProcessScanner | Scanned 238 processes (threshold=0.5 MB)
+2026-09-09 16:46:44 | DEBUG    | RAMGuard.MainWindow | Process list updated: 238 processes
+2026-09-09 16:46:54 | DEBUG    | RAMGuard.ProcessScanner | Scanned 238 processes (threshold=0.5 MB)
+2026-09-09 16:46:57 | DEBUG    | RAMGuard.MainWindow | Process list updated: 238 processes
+2026-09-09 16:47:07 | DEBUG    | RAMGuard.ProcessScanner | Scanned 242 processes (threshold=0.5 MB)
+2026-09-09 16:47:10 | DEBUG    | RAMGuard.MainWindow | Process list updated: 242 processes
+2026-09-09 16:47:21 | DEBUG    | RAMGuard.ProcessScanner | Scanned 237 processes (threshold=0.5 MB)
+2026-09-09 16:47:24 | DEBUG    | RAMGuard.MainWindow | Process list updated: 237 processes
+2026-09-09 16:47:34 | DEBUG    | RAMGuard.ProcessScanner | Scanned 237 processes (threshold=0.5 MB)
+2026-09-09 16:47:37 | DEBUG    | RAMGuard.MainWindow | Process list updated: 237 processes
+2026-09-09 16:47:48 | DEBUG    | RAMGuard.ProcessScanner | Scanned 237 processes (threshold=0.5 MB)
+2026-09-09 16:47:51 | DEBUG    | RAMGuard.MainWindow | Process list updated: 237 processes
+2026-09-09 16:48:01 | DEBUG    | RAMGuard.ProcessScanner | Scanned 237 processes (threshold=0.5 MB)
+2026-09-09 16:48:03 | DEBUG    | RAMGuard.MainWindow | Process list updated: 237 processes
+2026-09-09 16:48:14 | DEBUG    | RAMGuard.ProcessScanner | Scanned 237 processes (threshold=0.5 MB)
+2026-09-09 16:48:17 | DEBUG    | RAMGuard.MainWindow | Process list updated: 237 processes
+2026-09-09 16:48:27 | DEBUG    | RAMGuard.ProcessScanner | Scanned 237 processes (threshold=0.5 MB)
+2026-09-09 16:48:30 | DEBUG    | RAMGuard.MainWindow | Process list updated: 237 processes
+2026-09-09 16:48:41 | DEBUG    | RAMGuard.ProcessScanner | Scanned 237 processes (threshold=0.5 MB)
+2026-09-09 16:48:43 | DEBUG    | RAMGuard.MainWindow | Process list updated: 237 processes
+2026-09-09 16:48:53 | DEBUG    | RAMGuard.ProcessScanner | Scanned 238 processes (threshold=0.5 MB)
+2026-09-09 16:48:55 | DEBUG    | RAMGuard.MainWindow | Process list updated: 238 processes
+2026-09-09 16:49:06 | DEBUG    | RAMGuard.ProcessScanner | Scanned 238 processes (threshold=0.5 MB)
+2026-09-09 16:49:08 | DEBUG    | RAMGuard.MainWindow | Process list updated: 238 processes
+2026-09-09 16:49:18 | DEBUG    | RAMGuard.ProcessScanner | Scanned 238 processes (threshold=0.5 MB)
+2026-09-09 16:49:21 | DEBUG    | RAMGuard.MainWindow | Process list updated: 238 processes
+2026-09-09 16:49:36 | DEBUG    | RAMGuard.Config | Config loaded from D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\config\config.json
+2026-09-09 16:49:36 | INFO     | RAMGuard | ============================================================
+2026-09-09 16:49:36 | INFO     | RAMGuard | RAMGuard starting up
+2026-09-09 16:49:36 | INFO     | RAMGuard | Python: 3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]
+2026-09-09 16:49:36 | INFO     | RAMGuard | Platform: win32
+2026-09-09 16:49:36 | INFO     | RAMGuard | ============================================================
+2026-09-09 16:49:38 | INFO     | RAMGuard | Initialising database…
+2026-09-09 16:49:38 | INFO     | RAMGuard.Database | Database initialised at D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\data\ramguard.db
+2026-09-09 16:49:38 | INFO     | RAMGuard | Loading configuration…
+2026-09-09 16:49:38 | DEBUG    | RAMGuard.Config | Config loaded from D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\config\config.json
+2026-09-09 16:49:38 | INFO     | RAMGuard | Building main window…
+2026-09-09 16:49:38 | INFO     | RAMGuard.SafetyManager | ProcessSafetyManager initialised (own PID=23500)
+2026-09-09 16:49:38 | INFO     | RAMGuard.MemoryMonitor | MemoryMonitor initialised
+2026-09-09 16:49:38 | INFO     | RAMGuard.StartupManager | Loaded 9 startup entries
+2026-09-09 16:49:39 | INFO     | RAMGuard.MemoryMonitor | MemoryMonitor initialised
+2026-09-09 16:49:39 | DEBUG    | RAMGuard.Workers | MonitorWorker started (interval=3s)
+2026-09-09 16:49:39 | INFO     | RAMGuard | RAMGuard started successfully.
+2026-09-09 16:49:44 | DEBUG    | RAMGuard.ProcessScanner | Scanned 239 processes (threshold=0.5 MB)
+2026-09-09 16:49:46 | DEBUG    | RAMGuard.MainWindow | Process list updated: 239 processes
+2026-09-09 16:49:57 | DEBUG    | RAMGuard.ProcessScanner | Scanned 239 processes (threshold=0.5 MB)
+2026-09-09 16:50:00 | DEBUG    | RAMGuard.MainWindow | Process list updated: 239 processes
+2026-09-09 16:50:10 | DEBUG    | RAMGuard.ProcessScanner | Scanned 239 processes (threshold=0.5 MB)
+2026-09-09 16:50:13 | DEBUG    | RAMGuard.MainWindow | Process list updated: 239 processes
+2026-09-09 16:50:23 | DEBUG    | RAMGuard.ProcessScanner | Scanned 239 processes (threshold=0.5 MB)
+2026-09-09 16:50:26 | DEBUG    | RAMGuard.MainWindow | Process list updated: 239 processes
+2026-09-09 16:50:36 | DEBUG    | RAMGuard.ProcessScanner | Scanned 238 processes (threshold=0.5 MB)
+2026-09-09 16:50:39 | DEBUG    | RAMGuard.MainWindow | Process list updated: 238 processes
+2026-09-09 16:50:50 | DEBUG    | RAMGuard.ProcessScanner | Scanned 238 processes (threshold=0.5 MB)
+2026-09-09 16:50:53 | DEBUG    | RAMGuard.MainWindow | Process list updated: 238 processes
+2026-09-09 16:51:03 | DEBUG    | RAMGuard.ProcessScanner | Scanned 238 processes (threshold=0.5 MB)
+2026-09-09 16:51:06 | DEBUG    | RAMGuard.MainWindow | Process list updated: 238 processes
+2026-09-09 16:51:16 | DEBUG    | RAMGuard.ProcessScanner | Scanned 239 processes (threshold=0.5 MB)
+2026-09-09 16:51:19 | DEBUG    | RAMGuard.MainWindow | Process list updated: 239 processes
+2026-09-09 16:51:38 | DEBUG    | RAMGuard.Config | Config loaded from D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\config\config.json
+2026-09-09 16:51:38 | INFO     | RAMGuard | ============================================================
+2026-09-09 16:51:38 | INFO     | RAMGuard | RAMGuard starting up
+2026-09-09 16:51:38 | INFO     | RAMGuard | Python: 3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]
+2026-09-09 16:51:38 | INFO     | RAMGuard | Platform: win32
+2026-09-09 16:51:38 | INFO     | RAMGuard | ============================================================
+2026-09-09 16:51:40 | INFO     | RAMGuard | Initialising database…
+2026-09-09 16:51:40 | INFO     | RAMGuard.Database | Database initialised at D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\data\ramguard.db
+2026-09-09 16:51:40 | INFO     | RAMGuard | Loading configuration…
+2026-09-09 16:51:40 | DEBUG    | RAMGuard.Config | Config loaded from D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\config\config.json
+2026-09-09 16:51:40 | INFO     | RAMGuard | Building main window…
+2026-09-09 16:51:40 | INFO     | RAMGuard.SafetyManager | ProcessSafetyManager initialised (own PID=23304)
+2026-09-09 16:51:40 | INFO     | RAMGuard.MemoryMonitor | MemoryMonitor initialised
+2026-09-09 16:51:40 | INFO     | RAMGuard.StartupManager | Loaded 9 startup entries
+2026-09-09 16:51:40 | INFO     | RAMGuard.MemoryMonitor | MemoryMonitor initialised
+2026-09-09 16:51:41 | DEBUG    | RAMGuard.Workers | MonitorWorker started (interval=3s)
+2026-09-09 16:51:41 | INFO     | RAMGuard | RAMGuard started successfully.
+2026-09-09 16:51:46 | DEBUG    | RAMGuard.ProcessScanner | Scanned 239 processes (threshold=0.5 MB)
+2026-09-09 16:51:48 | DEBUG    | RAMGuard.MainWindow | Process list updated: 239 processes
+2026-09-09 16:51:58 | DEBUG    | RAMGuard.ProcessScanner | Scanned 239 processes (threshold=0.5 MB)
+2026-09-09 16:52:00 | DEBUG    | RAMGuard.MainWindow | Process list updated: 239 processes
+2026-09-09 16:52:10 | DEBUG    | RAMGuard.ProcessScanner | Scanned 239 processes (threshold=0.5 MB)
+2026-09-09 16:52:13 | DEBUG    | RAMGuard.MainWindow | Process list updated: 239 processes
+2026-09-09 16:52:23 | DEBUG    | RAMGuard.ProcessScanner | Scanned 237 processes (threshold=0.5 MB)
+2026-09-09 16:52:25 | DEBUG    | RAMGuard.MainWindow | Process list updated: 237 processes
+2026-09-09 16:52:35 | DEBUG    | RAMGuard.ProcessScanner | Scanned 237 processes (threshold=0.5 MB)
+2026-09-09 16:52:38 | DEBUG    | RAMGuard.MainWindow | Process list updated: 237 processes
+2026-09-09 16:52:48 | DEBUG    | RAMGuard.ProcessScanner | Scanned 237 processes (threshold=0.5 MB)
+2026-09-09 16:52:50 | DEBUG    | RAMGuard.MainWindow | Process list updated: 237 processes
+2026-09-09 16:53:00 | DEBUG    | RAMGuard.ProcessScanner | Scanned 237 processes (threshold=0.5 MB)
+2026-09-09 16:53:03 | DEBUG    | RAMGuard.MainWindow | Process list updated: 237 processes
+2026-09-09 16:53:27 | DEBUG    | RAMGuard.Config | Config loaded from D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\config\config.json
+2026-09-09 16:53:27 | INFO     | RAMGuard | ============================================================
+2026-09-09 16:53:27 | INFO     | RAMGuard | RAMGuard starting up
+2026-09-09 16:53:27 | INFO     | RAMGuard | Python: 3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]
+2026-09-09 16:53:27 | INFO     | RAMGuard | Platform: win32
+2026-09-09 16:53:27 | INFO     | RAMGuard | ============================================================
+2026-09-09 16:53:29 | INFO     | RAMGuard | Initialising database…
+2026-09-09 16:53:29 | INFO     | RAMGuard.Database | Database initialised at D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\data\ramguard.db
+2026-09-09 16:53:29 | INFO     | RAMGuard | Loading configuration…
+2026-09-09 16:53:29 | DEBUG    | RAMGuard.Config | Config loaded from D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\config\config.json
+2026-09-09 16:53:29 | INFO     | RAMGuard | Building main window…
+2026-09-09 16:53:29 | INFO     | RAMGuard.SafetyManager | ProcessSafetyManager initialised (own PID=15400)
+2026-09-09 16:53:29 | INFO     | RAMGuard.MemoryMonitor | MemoryMonitor initialised
+2026-09-09 16:53:29 | INFO     | RAMGuard.StartupManager | Loaded 9 startup entries
+2026-09-09 16:53:29 | INFO     | RAMGuard.MemoryMonitor | MemoryMonitor initialised
+2026-09-09 16:53:30 | DEBUG    | RAMGuard.Workers | MonitorWorker started (interval=3s)
+2026-09-09 16:53:30 | INFO     | RAMGuard | RAMGuard started successfully.
+2026-09-09 16:53:35 | DEBUG    | RAMGuard.ProcessScanner | Scanned 237 processes (threshold=0.5 MB)
+2026-09-09 16:53:38 | DEBUG    | RAMGuard.MainWindow | Process list updated: 237 processes
+2026-09-09 16:53:47 | DEBUG    | RAMGuard.ProcessScanner | Scanned 237 processes (threshold=0.5 MB)
+2026-09-09 16:53:50 | DEBUG    | RAMGuard.MainWindow | Process list updated: 237 processes
+2026-09-09 16:54:01 | DEBUG    | RAMGuard.ProcessScanner | Scanned 240 processes (threshold=0.5 MB)
+2026-09-09 16:54:04 | DEBUG    | RAMGuard.MainWindow | Process list updated: 240 processes
+2026-09-09 16:54:15 | DEBUG    | RAMGuard.ProcessScanner | Scanned 240 processes (threshold=0.5 MB)
+2026-09-09 16:54:18 | DEBUG    | RAMGuard.MainWindow | Process list updated: 240 processes
+2026-09-09 16:54:28 | DEBUG    | RAMGuard.ProcessScanner | Scanned 240 processes (threshold=0.5 MB)
+2026-09-09 16:54:31 | DEBUG    | RAMGuard.MainWindow | Process list updated: 240 processes
+2026-09-09 16:54:41 | DEBUG    | RAMGuard.ProcessScanner | Scanned 240 processes (threshold=0.5 MB)
+2026-09-09 16:54:44 | DEBUG    | RAMGuard.MainWindow | Process list updated: 240 processes
+2026-09-09 16:54:55 | DEBUG    | RAMGuard.ProcessScanner | Scanned 240 processes (threshold=0.5 MB)
+2026-09-09 16:54:59 | DEBUG    | RAMGuard.MainWindow | Process list updated: 240 processes
+2026-09-09 16:55:10 | DEBUG    | RAMGuard.ProcessScanner | Scanned 240 processes (threshold=0.5 MB)
+2026-09-09 16:55:13 | DEBUG    | RAMGuard.MainWindow | Process list updated: 240 processes
+2026-09-09 16:55:25 | DEBUG    | RAMGuard.ProcessScanner | Scanned 238 processes (threshold=0.5 MB)
+2026-09-09 16:55:27 | DEBUG    | RAMGuard.MainWindow | Process list updated: 238 processes
+2026-09-09 16:55:31 | INFO     | RAMGuard.MainWindow | RAMGuard shutting down…
+2026-09-09 16:55:40 | DEBUG    | RAMGuard.ProcessScanner | Scanned 237 processes (threshold=0.5 MB)
+2026-09-09 16:55:53 | DEBUG    | RAMGuard.Config | Config loaded from D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\config\config.json
+2026-09-09 16:55:54 | INFO     | RAMGuard | ============================================================
+2026-09-09 16:55:54 | INFO     | RAMGuard | RAMGuard starting up
+2026-09-09 16:55:54 | INFO     | RAMGuard | Python: 3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]
+2026-09-09 16:55:54 | INFO     | RAMGuard | Platform: win32
+2026-09-09 16:55:54 | INFO     | RAMGuard | ============================================================
+2026-09-09 16:55:56 | INFO     | RAMGuard | Initialising database…
+2026-09-09 16:55:56 | INFO     | RAMGuard.Database | Database initialised at D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\data\ramguard.db
+2026-09-09 16:55:56 | INFO     | RAMGuard | Loading configuration…
+2026-09-09 16:55:56 | DEBUG    | RAMGuard.Config | Config loaded from D:\Poject\Degree Project\16 Memory magement system (RamGuard)(os) Done\config\config.json
+2026-09-09 16:55:56 | INFO     | RAMGuard | Building main window…
+2026-09-09 16:55:56 | INFO     | RAMGuard.SafetyManager | ProcessSafetyManager initialised (own PID=6976)
+2026-09-09 16:55:56 | INFO     | RAMGuard.MemoryMonitor | MemoryMonitor initialised
+2026-09-09 16:55:56 | INFO     | RAMGuard.StartupManager | Loaded 9 startup entries
+2026-09-09 16:55:56 | INFO     | RAMGuard.MemoryMonitor | MemoryMonitor initialised
+2026-09-09 16:55:56 | DEBUG    | RAMGuard.Workers | MonitorWorker started (interval=3s)
+2026-09-09 16:55:56 | INFO     | RAMGuard | RAMGuard started successfully.
+2026-09-09 16:56:02 | DEBUG    | RAMGuard.ProcessScanner | Scanned 237 processes (threshold=0.5 MB)
+2026-09-09 16:56:04 | DEBUG    | RAMGuard.MainWindow | Process list updated: 237 processes
+2026-09-09 16:56:14 | DEBUG    | RAMGuard.ProcessScanner | Scanned 236 processes (threshold=0.5 MB)
+2026-09-09 16:56:17 | DEBUG    | RAMGuard.MainWindow | Process list updated: 236 processes
+2026-09-09 16:56:28 | DEBUG    | RAMGuard.ProcessScanner | Scanned 239 processes (threshold=0.5 MB)
+2026-09-09 16:56:31 | DEBUG    | RAMGuard.MainWindow | Process list updated: 239 processes
+2026-09-09 16:56:43 | DEBUG    | RAMGuard.ProcessScanner | Scanned 238 processes (threshold=0.5 MB)
+2026-09-09 16:56:46 | DEBUG    | RAMGuard.MainWindow | Process list updated: 238 processes
+2026-09-09 16:56:57 | DEBUG    | RAMGuard.ProcessScanner | Scanned 235 processes (threshold=0.5 MB)
+2026-09-09 16:57:00 | DEBUG    | RAMGuard.MainWindow | Process list updated: 235 processes
+2026-09-09 16:57:10 | DEBUG    | RAMGuard.ProcessScanner | Scanned 233 processes (threshold=0.5 MB)
+2026-09-09 16:57:13 | DEBUG    | RAMGuard.MainWindow | Process list updated: 233 processes
+2026-09-09 16:57:24 | DEBUG    | RAMGuard.ProcessScanner | Scanned 233 processes (threshold=0.5 MB)
+2026-09-09 16:57:27 | DEBUG    | RAMGuard.MainWindow | Process list updated: 233 processes
+2026-09-09 16:57:39 | DEBUG    | RAMGuard.ProcessScanner | Scanned 233 processes (threshold=0.5 MB)
+2026-09-09 16:57:42 | DEBUG    | RAMGuard.MainWindow | Process list updated: 233 processes
+2026-09-09 16:57:52 | DEBUG    | RAMGuard.ProcessScanner | Scanned 233 processes (threshold=0.5 MB)
+2026-09-09 16:57:55 | DEBUG    | RAMGuard.MainWindow | Process list updated: 233 processes
+2026-09-09 16:58:05 | DEBUG    | RAMGuard.ProcessScanner | Scanned 233 processes (threshold=0.5 MB)
+2026-09-09 16:58:07 | DEBUG    | RAMGuard.MainWindow | Process list updated: 233 processes
+2026-09-09 16:58:17 | DEBUG    | RAMGuard.ProcessScanner | Scanned 233 processes (threshold=0.5 MB)
+2026-09-09 16:58:20 | DEBUG    | RAMGuard.MainWindow | Process list updated: 233 processes
+2026-09-09 16:58:30 | DEBUG    | RAMGuard.ProcessScanner | Scanned 233 processes (threshold=0.5 MB)
+2026-09-09 16:58:33 | DEBUG    | RAMGuard.MainWindow | Process list updated: 233 processes
+2026-09-09 16:58:44 | DEBUG    | RAMGuard.ProcessScanner | Scanned 233 processes (threshold=0.5 MB)
+2026-09-09 16:58:47 | DEBUG    | RAMGuard.MainWindow | Process list updated: 233 processes
+2026-09-09 16:58:58 | DEBUG    | RAMGuard.ProcessScanner | Scanned 233 processes (threshold=0.5 MB)
+2026-09-09 16:59:01 | DEBUG    | RAMGuard.MainWindow | Process list updated: 233 processes
+2026-09-09 16:59:12 | DEBUG    | RAMGuard.ProcessScanner | Scanned 233 processes (threshold=0.5 MB)
+2026-09-09 16:59:15 | DEBUG    | RAMGuard.MainWindow | Process list updated: 233 processes
+2026-09-09 16:59:26 | DEBUG    | RAMGuard.ProcessScanner | Scanned 233 processes (threshold=0.5 MB)
+2026-09-09 16:59:29 | DEBUG    | RAMGuard.MainWindow | Process list updated: 233 processes
+2026-09-09 16:59:40 | DEBUG    | RAMGuard.ProcessScanner | Scanned 233 processes (threshold=0.5 MB)
+2026-09-09 16:59:42 | DEBUG    | RAMGuard.MainWindow | Process list updated: 233 processes
+2026-09-09 16:59:58 | DEBUG    | RAMGuard.ProcessScanner | Scanned 246 processes (threshold=0.5 MB)
+2026-09-09 17:00:04 | DEBUG    | RAMGuard.MainWindow | Process list updated: 246 processes
+2026-09-09 17:00:21 | DEBUG    | RAMGuard.ProcessScanner | Scanned 251 processes (threshold=0.5 MB)
+2026-09-09 17:00:26 | DEBUG    | RAMGuard.MainWindow | Process list updated: 251 processes
+2026-09-09 17:00:42 | DEBUG    | RAMGuard.ProcessScanner | Scanned 268 processes (threshold=0.5 MB)
+2026-09-09 17:00:45 | DEBUG    | RAMGuard.MainWindow | Process list updated: 268 processes
+2026-09-09 17:00:45 | INFO     | RAMGuard.MainWindow | RAMGuard shutting down…

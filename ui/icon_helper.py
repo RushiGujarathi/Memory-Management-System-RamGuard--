@@ -146,7 +146,7 @@ class IconHelper:
         return pixmap
 
     @staticmethod
-    def create_lightning_icon(size: int = 24, color: str = "#38bdf8") -> QPixmap:
+    def create_lightning_icon(size: int = 24, color: str = "#38bdf8", bg_color: str = "") -> QPixmap:
         """Optimization lightning bolt icon."""
         pixmap = QPixmap(size, size)
         pixmap.fill(Qt.GlobalColor.transparent)
@@ -155,6 +155,11 @@ class IconHelper:
         painter.setRenderHint(QPainter.RenderHint.Antialiasing)
 
         s = float(size)
+        if bg_color:
+            painter.setBrush(QColor(bg_color))
+            painter.setPen(QPen(QColor(color).lighter(120), 1))
+            painter.drawRoundedRect(QRectF(1, 1, s - 2, s - 2), s * 0.22, s * 0.22)
+
         path = QPainterPath()
         path.moveTo(s * 0.58, s * 0.1)
         path.lineTo(s * 0.22, s * 0.52)

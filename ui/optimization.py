@@ -529,18 +529,16 @@ class OptimizationPage(QWidget):
             accent = widgets["accent"]
             if mode_id == active_mode:
                 widgets["card"].setStyleSheet(
-                    f"QFrame {{ background-color: {accent}10; border: 1.5px solid {accent}60;"
-                    "border-radius: 14px; padding: 0px; }}"
+                    f"background-color: {accent}12; border: 1.5px solid {accent}88; border-radius: 14px;"
                 )
                 widgets["btn"].setObjectName("optimize_btn")
                 widgets["btn"].setText("✓ Selected")
             else:
-                widgets["card"].setStyleSheet("")
-                widgets["card"].setObjectName("card")
+                widgets["card"].setStyleSheet(
+                    "background-color: #0b1526; border: 1px solid rgba(59, 130, 246, 0.16); border-radius: 14px;"
+                )
                 widgets["btn"].setObjectName("secondary_btn")
                 widgets["btn"].setText("Select")
-            widgets["card"].style().unpolish(widgets["card"])
-            widgets["card"].style().polish(widgets["card"])
             widgets["btn"].style().unpolish(widgets["btn"])
             widgets["btn"].style().polish(widgets["btn"])
 

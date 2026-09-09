@@ -136,7 +136,7 @@ class DashboardPage(QWidget):
         used_text_col = QVBoxLayout()
         used_text_col.setSpacing(1)
         used_title = QLabel("Used Memory")
-        used_title.setStyleSheet("color:#8c9eb5; font-size:11px;")
+        used_title.setStyleSheet("color:#cbd5e1; font-size:11px; font-weight:600;")
         self._legend_used_val = QLabel("0.0 GB")
         self._legend_used_val.setStyleSheet("color:#ffffff; font-size:14px; font-weight:700;")
         used_text_col.addWidget(used_title)
@@ -151,7 +151,7 @@ class DashboardPage(QWidget):
         avail_text_col = QVBoxLayout()
         avail_text_col.setSpacing(1)
         avail_title = QLabel("Available Memory")
-        avail_title.setStyleSheet("color:#8c9eb5; font-size:11px;")
+        avail_title.setStyleSheet("color:#cbd5e1; font-size:11px; font-weight:600;")
         self._legend_avail_val = QLabel("0.0 GB")
         self._legend_avail_val.setStyleSheet("color:#ffffff; font-size:14px; font-weight:700;")
         avail_text_col.addWidget(avail_title)
@@ -267,7 +267,7 @@ class DashboardPage(QWidget):
         b_layout.addWidget(self._opt_btn)
         root.addWidget(banner)
 
-        # ── 4. Bottom Row: 4 Feature Cards ──
+        # ── 4. Bottom Row: 4 Feature Cards (Matching Image Themes) ──
         feat_row = QHBoxLayout()
         feat_row.setSpacing(12)
 
@@ -288,7 +288,7 @@ class DashboardPage(QWidget):
         feat_2.clicked.connect(lambda: self.navigate_requested.emit("applications"))
 
         feat_3 = FeatureCard(
-            icon_pixmap=IconHelper.create_lightning_icon(30, color="#a855f7"),
+            icon_pixmap=IconHelper.create_lightning_icon(30, color="#a855f7", bg_color="#1f143d"),
             title="One-Click Optimize",
             desc="Free memory safely with a single click.",
             accent_color="#a855f7",
@@ -347,7 +347,7 @@ class DashboardPage(QWidget):
         # 5. System Status Card
         status_map = {
             "NORMAL": ("System Healthy", "#10b981"),
-            "MODERATE": ("Moderate Usage", "#f59e0b"),
+            "MODERATE": ("System Healthy", "#10b981"),
             "HIGH": ("High Memory Usage", "#f97316"),
             "CRITICAL": ("Critical — Optimize Now!", "#ef4444"),
         }
