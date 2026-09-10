@@ -29,6 +29,7 @@ from PyQt6.QtGui import QColor, QFont, QIcon, QAction
 from core.process_scanner import ProcessInfo
 from core.safety_manager import SafetyLevel
 from ui.icon_helper import IconHelper
+from ui.styles import rgba
 from utils.logger import get_logger
 
 logger = get_logger("ApplicationsPage")
@@ -87,9 +88,9 @@ class ProcessDetailDialog(QDialog):
 
         badge = QLabel(f"  {label}  ")
         badge.setStyleSheet(f"""
-            background-color: {color}20;
+            background-color: {rgba(color, "20")};
             color: {color};
-            border: 1px solid {color}55;
+            border: 1px solid {rgba(color, "55")};
             border-radius: 11px;
             font-size: 11px;
             font-weight: 700;
@@ -459,7 +460,7 @@ class ApplicationsPage(QWidget):
                 border: none;
                 border-bottom: 2px solid rgba(59, 130, 246, 0.30);
                 border-right: 1px solid rgba(59, 130, 246, 0.12);
-                padding: 0px 14px;
+                padding: 0px 10px;
                 height: 42px;
                 font-weight: 700;
                 font-size: 11px;
@@ -524,7 +525,7 @@ class ApplicationsPage(QWidget):
 
         # COL_CLASS — fixed 145 px
         hdr_view.setSectionResizeMode(self.COL_CLASS, QHeaderView.ResizeMode.Fixed)
-        self._table.setColumnWidth(self.COL_CLASS, 145)
+        self._table.setColumnWidth(self.COL_CLASS, 185)
 
         # COL_ACTION — fixed 130 px
         hdr_view.setSectionResizeMode(self.COL_ACTION, QHeaderView.ResizeMode.Fixed)
@@ -899,9 +900,9 @@ class ApplicationsPage(QWidget):
             class_pill.setAlignment(Qt.AlignmentFlag.AlignCenter)
             class_pill.setStyleSheet(f"""
                 QLabel {{
-                    background-color: {color}1a;
+                    background-color: {rgba(color, "1a")};
                     color: {color};
-                    border: 1px solid {color}55;
+                    border: 1px solid {rgba(color, "55")};
                     border-radius: 10px;
                     padding: 0px 10px;
                     font-size: 10px;

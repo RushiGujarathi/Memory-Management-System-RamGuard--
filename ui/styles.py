@@ -35,6 +35,25 @@ _TEXT_MID   = "#94a3b8"
 _TEXT_LO    = "#64748b"
 _BORDER     = "rgba(59, 130, 246, 0.20)"
 
+
+def rgba(hex_color: str, alpha_hex: str = "ff") -> str:
+    """
+    Build a Qt-safe 'rgba(r, g, b, a)' string from a base '#RRGGBB' color and a
+    2-digit hex alpha suffix (e.g. rgba('#3b82f6', '1a') for ~10% opacity blue).
+
+    Qt Style Sheets do NOT support the CSS convention of an 8-digit hex color
+    in '#RRGGBBAA' order. Qt's own 8-digit hex format is '#AARRGGBB' (alpha
+    FIRST), so naively concatenating a hex color with an alpha suffix (e.g.
+    f"{color}1a") is silently reinterpreted as a different, wrong color by
+    Qt's CSS engine instead of a translucent version of the intended one.
+    Always build translucent colors through this helper instead.
+    """
+    h = hex_color.lstrip("#")
+    r, g, b = int(h[0:2], 16), int(h[2:4], 16), int(h[4:6], 16)
+    a = int(alpha_hex, 16) / 255.0
+    return f"rgba({r}, {g}, {b}, {a:.3f})"
+
+
 DARK_THEME = f"""
 /* ═══════════════════════════════════════════════════════════════
    RAMGuard — Unified Dark Navy Design System

@@ -16,6 +16,7 @@ from core.process_scanner import ProcessInfo
 from core.optimizer import OptimizationResult
 from core.safety_manager import SafetyLevel
 from utils.logger import get_logger
+from ui.styles import rgba
 import datetime
 
 logger = get_logger("OptimizationPage")
@@ -37,9 +38,9 @@ _BORDER    = "rgba(59, 130, 246, 0.20)"
 def _pill_style(color: str) -> str:
     """Returns a QLabel stylesheet for a small rounded pill badge."""
     return (
-        f"background-color: {color}1a;"
+        f"background-color: {rgba(color, '1a')};"
         f"color: {color};"
-        f"border: 1px solid {color}55;"
+        f"border: 1px solid {rgba(color, '55')};"
         f"border-radius: 10px;"
         f"padding: 2px 10px;"
         f"font-size: 10px;"
@@ -445,7 +446,7 @@ class OptimizationPage(QWidget):
             if mode_id == "SAFE":
                 badge = QLabel("Default")
                 badge.setStyleSheet(
-                    f"background:{_ACCENT}22; color:{_ACCENT2}; border:1px solid {_ACCENT}55;"
+                    f"background:{rgba(_ACCENT, '22')}; color:{_ACCENT2}; border:1px solid {rgba(_ACCENT, '55')};"
                     "border-radius:8px; font-size:9px; font-weight:700; padding:2px 8px; letter-spacing:0.5px;"
                 )
                 badge.setFixedHeight(20)
@@ -453,11 +454,11 @@ class OptimizationPage(QWidget):
                 cl.addWidget(badge)
 
             i_lbl = QLabel(icon)
-            i_lbl.setStyleSheet(f"font-size:28px; background:transparent; color:{accent};")
+            i_lbl.setStyleSheet(f"font-size:28px; background:transparent; color:{accent}; border:none;")
             n_lbl = QLabel(mode_name)
-            n_lbl.setStyleSheet(f"font-size:14px; font-weight:700; color:{_TEXT_HI}; background:transparent;")
+            n_lbl.setStyleSheet(f"font-size:14px; font-weight:700; color:{_TEXT_HI}; background:transparent; border:none;")
             d_lbl = QLabel(mode_desc)
-            d_lbl.setStyleSheet(f"color:{_TEXT_MID}; font-size:11px; background:transparent;")
+            d_lbl.setStyleSheet(f"color:{_TEXT_MID}; font-size:11px; background:transparent; border:none;")
             d_lbl.setWordWrap(True)
 
             cl.addWidget(i_lbl)
@@ -504,11 +505,11 @@ class OptimizationPage(QWidget):
         note_layout = QHBoxLayout(note_card)
         note_layout.setSpacing(10)
         shield_lbl = QLabel("🔒")
-        shield_lbl.setStyleSheet("font-size:18px; background:transparent;")
+        shield_lbl.setStyleSheet("font-size:18px; background:transparent; border:none;")
         note_text = QLabel(
             "System processes are always protected. Only safe applications will be suggested for closure."
         )
-        note_text.setStyleSheet(f"color:{_TEXT_MID}; font-size:11px; background:transparent;")
+        note_text.setStyleSheet(f"color:{_TEXT_MID}; font-size:11px; background:transparent; border:none;")
         note_text.setWordWrap(True)
         note_layout.addWidget(shield_lbl, 0, Qt.AlignmentFlag.AlignVCenter)
         note_layout.addWidget(note_text, 1)
@@ -529,7 +530,7 @@ class OptimizationPage(QWidget):
             accent = widgets["accent"]
             if mode_id == active_mode:
                 widgets["card"].setStyleSheet(
-                    f"background-color: {accent}12; border: 1.5px solid {accent}88; border-radius: 14px;"
+                    f"background-color: {rgba(accent, '12')}; border: 1.5px solid {rgba(accent, '88')}; border-radius: 14px;"
                 )
                 widgets["btn"].setObjectName("optimize_btn")
                 widgets["btn"].setText("✓ Selected")

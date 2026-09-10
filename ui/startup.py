@@ -14,6 +14,7 @@ from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QColor
 from core.startup_manager import StartupManager
 from utils.logger import get_logger
+from ui.styles import rgba
 
 logger = get_logger("StartupPage")
 
@@ -44,9 +45,9 @@ def _pill_lbl(text: str, color: str) -> QLabel:
     lbl.setFixedHeight(22)
     lbl.setAlignment(Qt.AlignmentFlag.AlignCenter)
     lbl.setStyleSheet(
-        f"background-color: {color}1a;"
+        f"background-color: {rgba(color, '1a')};"
         f"color: {color};"
-        f"border: 1px solid {color}55;"
+        f"border: 1px solid {rgba(color, '55')};"
         f"border-radius: 9px;"
         f"padding: 0px 10px;"
         f"font-size: 10px;"

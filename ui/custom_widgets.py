@@ -22,6 +22,7 @@ from PyQt6.QtGui import (
 )
 from core.memory_monitor import MemoryPressure
 from ui.icon_helper import IconHelper
+from ui.styles import rgba
 
 
 class DonutGauge(QWidget):
@@ -272,6 +273,7 @@ class StatCard(QFrame):
         self._icon_lbl = QLabel()
         self._icon_lbl.setPixmap(icon_pixmap)
         self._icon_lbl.setFixedSize(30, 30)
+        self._icon_lbl.setStyleSheet("border: none; background: transparent;")
 
         self._title_lbl = QLabel(title)
         self._title_lbl.setStyleSheet("""
@@ -279,6 +281,7 @@ class StatCard(QFrame):
             font-size: 11px;
             font-weight: 700;
             letter-spacing: 0.5px;
+            border: none;
         """)
 
         self._badge_lbl = QLabel(badge_text)
@@ -289,6 +292,8 @@ class StatCard(QFrame):
         top_row.addWidget(self._title_lbl)
         top_row.addStretch()
         top_row.addWidget(self._badge_lbl)
+        layout.addLayout(top_row)
+
         # ── Row 2: Value on left, Sparkline on right ──
         bottom_row = QHBoxLayout()
         bottom_row.setSpacing(12)
@@ -300,6 +305,7 @@ class StatCard(QFrame):
             font-size: 26px;
             font-weight: 800;
             min-width: 65px;
+            border: none;
         """)
         bottom_row.addWidget(self._val_lbl)
 
@@ -315,9 +321,9 @@ class StatCard(QFrame):
         self._badge_lbl.setText(text)
         self._badge_lbl.setVisible(True)
         self._badge_lbl.setStyleSheet(f"""
-            background-color: {color}25;
+            background-color: {rgba(color, "25")};
             color: {color};
-            border: 1px solid {color}60;
+            border: 1px solid {rgba(color, "60")};
             border-radius: 9px;
             padding: 2px 8px;
             font-size: 11px;
@@ -368,21 +374,22 @@ class SystemStatusCard(QFrame):
         self._icon_lbl = QLabel()
         self._icon_lbl.setPixmap(IconHelper.create_warning_icon(32, color="#ef4444", bg_color="#2b1419"))
         self._icon_lbl.setFixedSize(32, 32)
+        self._icon_lbl.setStyleSheet("border: none; background: transparent;")
 
         text_col = QVBoxLayout()
         text_col.setSpacing(2)
 
         self._title_lbl = QLabel("SYSTEM STATUS")
-        self._title_lbl.setStyleSheet("color:#8c9eb5;font-size:10px;font-weight:700;letter-spacing:0.8px;")
+        self._title_lbl.setStyleSheet("color:#8c9eb5;font-size:10px;font-weight:700;letter-spacing:0.8px; border:none;")
 
         self._val_lbl = QLabel("System Healthy")
-        self._val_lbl.setStyleSheet("color:#10b981;font-size:15px;font-weight:700;")
+        self._val_lbl.setStyleSheet("color:#10b981;font-size:15px;font-weight:700; border:none;")
 
         text_col.addWidget(self._title_lbl)
         text_col.addWidget(self._val_lbl)
 
         chevron = QLabel("›")
-        chevron.setStyleSheet("color:#64748b;font-size:22px;font-weight:300;padding-right:4px;")
+        chevron.setStyleSheet("color:#64748b;font-size:22px;font-weight:300;padding-right:4px; border:none;")
 
         layout.addWidget(self._icon_lbl)
         layout.addLayout(text_col, 1)
@@ -482,13 +489,13 @@ class FeatureCard(QFrame):
 
         self.setStyleSheet(f"""
             QFrame#feature_card {{
-                background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 {accent_color}18, stop:1 #0b1526);
-                border: 1px solid {accent_color}35;
+                background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 {rgba(accent_color, "18")}, stop:1 #0b1526);
+                border: 1px solid {rgba(accent_color, "35")};
                 border-radius: 14px;
             }}
             QFrame#feature_card:hover {{
-                background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 {accent_color}2a, stop:1 #0e1c34);
-                border: 1px solid {accent_color}88;
+                background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 {rgba(accent_color, "2a")}, stop:1 #0e1c34);
+                border: 1px solid {rgba(accent_color, "88")};
             }}
         """)
 
@@ -499,12 +506,13 @@ class FeatureCard(QFrame):
         self._icon = QLabel()
         self._icon.setPixmap(icon_pixmap)
         self._icon.setFixedSize(30, 30)
+        self._icon.setStyleSheet("border: none; background: transparent;")
 
         self._title = QLabel(title)
-        self._title.setStyleSheet("color:#ffffff; font-size:14px; font-weight:700;")
+        self._title.setStyleSheet("color:#ffffff; font-size:14px; font-weight:700; border:none;")
 
         self._desc = QLabel(desc)
-        self._desc.setStyleSheet("color:#cbd5e1; font-size:11px; line-height:1.3;")
+        self._desc.setStyleSheet("color:#cbd5e1; font-size:11px; line-height:1.3; border:none;")
         self._desc.setWordWrap(True)
 
         bottom_row = QHBoxLayout()
