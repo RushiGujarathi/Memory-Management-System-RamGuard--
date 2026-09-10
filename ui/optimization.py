@@ -34,6 +34,13 @@ _TEXT_MID  = "#94a3b8"
 _TEXT_LO   = "#64748b"
 _BORDER    = "rgba(59, 130, 246, 0.20)"
 
+# Subtitle copy shown inside the "Current Mode" banner per mode
+_MODE_SUBTITLES = {
+    "SAFE":   "Only selected applications will be closed. Your system stays secure.",
+    "SMART":  "High-memory apps classified as safe will be automatically selected.",
+    "CUSTOM": "Manually choose any application from the full list to close.",
+}
+
 
 def _pill_style(color: str) -> str:
     """Returns a QLabel stylesheet for a small rounded pill badge."""
@@ -47,6 +54,24 @@ def _pill_style(color: str) -> str:
         f"font-weight: 700;"
         f"letter-spacing: 0.5px;"
     )
+
+
+def _icon_box(emoji: str, color: str, size: int = 40) -> QFrame:
+    """Small rounded square icon badge used in page headers."""
+    box = QFrame()
+    box.setFixedSize(size, size)
+    box.setStyleSheet(
+        f"background-color: {rgba(color, '1f')};"
+        f"border: 1px solid {rgba(color, '55')};"
+        f"border-radius: 10px;"
+    )
+    lay = QHBoxLayout(box)
+    lay.setContentsMargins(0, 0, 0, 0)
+    lay.setAlignment(Qt.AlignmentFlag.AlignCenter)
+    lbl = QLabel(emoji)
+    lbl.setStyleSheet(f"font-size:18px; background:transparent; border:none; color:{color};")
+    lay.addWidget(lbl)
+    return box
 
 
 class ConfirmationDialog(QDialog):
@@ -410,12 +435,32 @@ class OptimizationPage(QWidget):
         root.setSpacing(20)
 
         # ── Header ──
+        header_row = QHBoxLayout()
+        header_row.setSpacing(14)
+
+        icon_box = _icon_box("⚡", _ACCENT)
+
+        title_col = QVBoxLayout()
+        title_col.setSpacing(2)
         title = QLabel("Optimization")
         title.setObjectName("section_title")
         sub = QLabel("Choose an optimization mode and start the process")
         sub.setObjectName("section_sub")
-        root.addWidget(title)
-        root.addWidget(sub)
+        title_col.addWidget(title)
+        title_col.addWidget(sub)
+
+        header_row.addWidget(icon_box, 0, Qt.AlignmentFlag.AlignTop)
+        header_row.addLayout(title_col)
+        header_row.addStretch()
+
+        breadcrumb = QLabel("Better Memory   →   Smoother Performance   →   Faster You")
+        breadcrumb.setStyleSheet(f"color:{_TEXT_MID}; font-size:11px; font-style:italic;")
+        pulse = QLabel("〰")
+        pulse.setStyleSheet(f"color:{_ACCENT2}; font-size:16px;")
+        header_row.addWidget(breadcrumb, 0, Qt.AlignmentFlag.AlignVCenter)
+        header_row.addWidget(pulse, 0, Qt.AlignmentFlag.AlignVCenter)
+
+        root.addLayout(header_row)
 
         # ── Mode cards ──
         mode_row = QHBoxLayout()
@@ -478,19 +523,46 @@ class OptimizationPage(QWidget):
 
         root.addLayout(mode_row)
 
-        # ── Current mode label ──
+        # ── Current mode banner (icon + title/subtitle + Optimize button) ──
+        mode_banner = QFrame()
+        mode_banner.setObjectName("mode_banner")
+        mode_banner.setStyleSheet(f"""
+            QFrame#mode_banner {{
+                background-color: rgba(37, 99, 235, 0.12);
+                border: 1px solid rgba(37, 99, 235, 0.30);
+                border-radius: 12px;
+            }}
+        """)
+        banner_layout = QHBoxLayout(mode_banner)
+        banner_layout.setContentsMargins(18, 14, 18, 14)
+        banner_layout.setSpacing(14)
+
+        rocket = QLabel("🚀")
+        rocket.setStyleSheet("font-size:24px; background:transparent;")
+
+        banner_text = QVBoxLayout()
+        banner_text.setSpacing(2)
         self._current_mode_lbl = QLabel("Current Mode: SAFE")
-        self._current_mode_lbl.setStyleSheet(f"color:{_ACCENT2}; font-size:13px; font-weight:600;")
-        root.addWidget(self._current_mode_lbl)
+        self._current_mode_lbl.setStyleSheet(f"color:{_ACCENT2}; font-size:13px; font-weight:700; background:transparent;")
+        self._mode_subtitle_lbl = QLabel(_MODE_SUBTITLES["SAFE"])
+        self._mode_subtitle_lbl.setStyleSheet(f"color:{_TEXT_MID}; font-size:11px; background:transparent;")
+        self._mode_subtitle_lbl.setWordWrap(True)
+        banner_text.addWidget(self._current_mode_lbl)
+        banner_text.addWidget(self._mode_subtitle_lbl)
+
+        banner_layout.addWidget(rocket, 0, Qt.AlignmentFlag.AlignVCenter)
+        banner_layout.addLayout(banner_text, 1)
 
         # ── Optimize Button ──
         self._opt_btn = QPushButton("⚡  OPTIMIZE NOW")
         self._opt_btn.setObjectName("optimize_btn")
-        self._opt_btn.setFixedHeight(58)
+        self._opt_btn.setFixedHeight(50)
+        self._opt_btn.setFixedWidth(220)
         self._opt_btn.setCursor(Qt.CursorShape.PointingHandCursor)
-        self._opt_btn.setStyleSheet(self._opt_btn.styleSheet())  # use global
         self._opt_btn.clicked.connect(lambda: self.optimize_requested.emit(self._mode))
-        root.addWidget(self._opt_btn)
+        banner_layout.addWidget(self._opt_btn, 0, Qt.AlignmentFlag.AlignVCenter)
+
+        root.addWidget(mode_banner)
 
         # ── Safety note ──
         note_card = QFrame()
@@ -515,6 +587,40 @@ class OptimizationPage(QWidget):
         note_layout.addWidget(note_text, 1)
         root.addWidget(note_card)
 
+        # ── Benefit stats strip ──
+        stats_row = QHBoxLayout()
+        stats_row.setSpacing(14)
+        benefit_stats = [
+            ("💾", "More Free RAM",       "Better performance",           _ACCENT2),
+            ("⚡", "Faster Response",      "Smooth multitasking",          "#a855f7"),
+            ("🛡", "Safer Operations",     "Protects important processes", _SUCCESS),
+            ("🍃", "Longer Battery Life",  "Less resource usage",          "#2dd4bf"),
+        ]
+        for icon, stat_title, stat_sub, color in benefit_stats:
+            stat_card = QFrame()
+            stat_card.setStyleSheet(
+                f"background-color: {_BG_PANEL}; border: 1px solid {_BORDER}; border-radius: 12px;"
+            )
+            sc = QHBoxLayout(stat_card)
+            sc.setContentsMargins(14, 12, 14, 12)
+            sc.setSpacing(10)
+
+            icon_holder = _icon_box(icon, color, size=34)
+            text_col = QVBoxLayout()
+            text_col.setSpacing(1)
+            t_lbl = QLabel(stat_title)
+            t_lbl.setStyleSheet(f"color:{_TEXT_HI}; font-size:12px; font-weight:700; background:transparent;")
+            s_lbl = QLabel(stat_sub)
+            s_lbl.setStyleSheet(f"color:{_TEXT_MID}; font-size:10px; background:transparent;")
+            text_col.addWidget(t_lbl)
+            text_col.addWidget(s_lbl)
+
+            sc.addWidget(icon_holder, 0, Qt.AlignmentFlag.AlignVCenter)
+            sc.addLayout(text_col, 1)
+            stats_row.addWidget(stat_card)
+
+        root.addLayout(stats_row)
+
         root.addStretch()
 
         self._mode = "SAFE"
@@ -524,6 +630,7 @@ class OptimizationPage(QWidget):
         self._mode = mode
         self._highlight_mode(mode)
         self._current_mode_lbl.setText(f"Current Mode: {mode}")
+        self._mode_subtitle_lbl.setText(_MODE_SUBTITLES.get(mode, ""))
 
     def _highlight_mode(self, active_mode: str) -> None:
         for mode_id, widgets in self._mode_cards.items():

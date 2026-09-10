@@ -41,17 +41,15 @@ def rgba(hex_color: str, alpha_hex: str = "ff") -> str:
     Build a Qt-safe 'rgba(r, g, b, a)' string from a base '#RRGGBB' color and a
     2-digit hex alpha suffix (e.g. rgba('#3b82f6', '1a') for ~10% opacity blue).
 
-    Qt Style Sheets do NOT support the CSS convention of an 8-digit hex color
-    in '#RRGGBBAA' order. Qt's own 8-digit hex format is '#AARRGGBB' (alpha
-    FIRST), so naively concatenating a hex color with an alpha suffix (e.g.
-    f"{color}1a") is silently reinterpreted as a different, wrong color by
-    Qt's CSS engine instead of a translucent version of the intended one.
-    Always build translucent colors through this helper instead.
+    Qt style sheets accept the rgba(r, g, b, a) form with an integer alpha
+    channel in the range 0-255. We intentionally convert the provided hex alpha
+    suffix into that integer form instead of producing a floating-point alpha
+    value, because some Qt stylesheet parsers reject the float variant.
     """
     h = hex_color.lstrip("#")
     r, g, b = int(h[0:2], 16), int(h[2:4], 16), int(h[4:6], 16)
-    a = int(alpha_hex, 16) / 255.0
-    return f"rgba({r}, {g}, {b}, {a:.3f})"
+    a = int(alpha_hex, 16)
+    return f"rgba({r}, {g}, {b}, {a})"
 
 
 DARK_THEME = f"""
@@ -419,9 +417,10 @@ QCheckBox {{
 QCheckBox::indicator {{
     width: 18px;
     height: 18px;
-    border: 1.5px solid rgba(148, 163, 184, 0.35);
-    border-radius: 4px;
+    border: 2px solid rgba(148, 163, 184, 0.35);
+    border-radius: 0px;
     background-color: {_BG_INPUT};
+    image: none;
 }}
 
 QCheckBox::indicator:hover {{

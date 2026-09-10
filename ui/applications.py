@@ -741,18 +741,19 @@ class ApplicationsPage(QWidget):
 
             cb = QCheckBox()
             cb.setCursor(Qt.CursorShape.PointingHandCursor)
-            cb.setFixedSize(20, 20)
+            cb.setFixedSize(16, 16)
             cb.setStyleSheet("""
                 QCheckBox {
                     background: transparent;
                     spacing: 0px;
                 }
                 QCheckBox::indicator {
-                    width: 18px;
-                    height: 18px;
-                    border: 1.5px solid rgba(148, 163, 184, 0.40);
-                    border-radius: 4px;
+                    width: 14px;
+                    height: 14px;
+                    border: 2px solid rgba(148, 163, 184, 0.40);
+                    border-radius: 0px;
                     background-color: #0b1930;
+                    image: none;
                 }
                 QCheckBox::indicator:hover {
                     border-color: #3b82f6;
@@ -776,8 +777,8 @@ class ApplicationsPage(QWidget):
             name_container.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
             name_container.setStyleSheet("background: transparent;")
             name_layout = QHBoxLayout(name_container)
-            # left-pad 10px, right-pad 8px so text never touches column edge
-            name_layout.setContentsMargins(10, 0, 8, 0)
+            # slightly push the process name text to the right within the column
+            name_layout.setContentsMargins(0, 20, 28, 20)
             name_layout.setSpacing(0)   # controlled manually below
             name_layout.setAlignment(Qt.AlignmentFlag.AlignVCenter)
 
@@ -787,9 +788,9 @@ class ApplicationsPage(QWidget):
             icon_lbl.setScaledContents(False)
             icon_lbl.setStyleSheet("background: transparent; margin: 0px; padding: 0px;")
 
-            # 12 px spacer between icon and text
+            # 14 px spacer between icon and text
             spacer_lbl = QLabel()
-            spacer_lbl.setFixedWidth(12)
+            spacer_lbl.setFixedWidth(14)
             spacer_lbl.setStyleSheet("background: transparent;")
 
             name_lbl = QLabel(proc.name)

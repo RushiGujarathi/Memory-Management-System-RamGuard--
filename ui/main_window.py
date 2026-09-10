@@ -207,8 +207,9 @@ class MainWindow(QMainWindow):
 
         # ── Build pages ──
         self._dash_page = DashboardPage(
-            on_optimize_clicked=self._trigger_optimization,
+            on_optimize_clicked=self._show_applications_page,
             on_navigate=self._nav_to,
+            on_one_click_optimize_clicked=self._trigger_optimization,
         )
         self._apps_page = ApplicationsPage()
         self._opt_page = OptimizationPage()
@@ -249,7 +250,6 @@ class MainWindow(QMainWindow):
         nav_items = [
             ("dashboard",    "Dashboard",       IconHelper.create_home_icon(20, "#ffffff")),
             ("applications", "Applications",    IconHelper.create_grid_icon(20, "#8c9eb5")),
-            ("optimization", "Optimization",    IconHelper.create_lightning_icon(20, "#8c9eb5")),
             ("startup",      "Startup Manager", IconHelper.create_rocket_icon(20, "#8c9eb5")),
             ("history",      "History",         IconHelper.create_clock_icon(20, "#8c9eb5")),
             ("settings",     "Settings",        IconHelper.create_gear_icon(20, "#8c9eb5")),
@@ -435,6 +435,9 @@ class MainWindow(QMainWindow):
     # ═══════════════════════════════════════════════════════════════
     #  Optimization Workflow
     # ═══════════════════════════════════════════════════════════════
+
+    def _show_applications_page(self) -> None:
+        self._nav_to("applications")
 
     def _trigger_optimization(self) -> None:
         mode = self._config.default_mode

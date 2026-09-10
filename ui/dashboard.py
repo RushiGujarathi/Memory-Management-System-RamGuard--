@@ -32,9 +32,10 @@ class DashboardPage(QWidget):
 
     navigate_requested = pyqtSignal(str)
 
-    def __init__(self, on_optimize_clicked, on_navigate=None, parent=None) -> None:
+    def __init__(self, on_optimize_clicked, on_navigate=None, parent=None, on_one_click_optimize_clicked=None) -> None:
         super().__init__(parent)
         self._on_optimize = on_optimize_clicked
+        self._on_one_click_optimize = on_one_click_optimize_clicked or (lambda: self.navigate_requested.emit("optimization"))
         if on_navigate:
             self.navigate_requested.connect(on_navigate)
         self._build_ui()
@@ -132,13 +133,17 @@ class DashboardPage(QWidget):
         # Item 1: Used Memory (Orange)
         used_item = QHBoxLayout()
         used_dot = QLabel("●")
-        used_dot.setStyleSheet("color:#f97316; font-size:14px;")
+        used_dot.setStyleSheet("color:#f97316; font-size:14px; margin-right: 6px;")
         used_text_col = QVBoxLayout()
-        used_text_col.setSpacing(1)
+        used_text_col.setSpacing(2)
         used_title = QLabel("Used Memory")
-        used_title.setStyleSheet("color:#cbd5e1; font-size:11px; font-weight:600;")
+        used_title.setStyleSheet(
+            "color:#94a3b8; font-size:10px; font-weight:700; letter-spacing:0.8px;"
+        )
         self._legend_used_val = QLabel("0.0 GB")
-        self._legend_used_val.setStyleSheet("color:#ffffff; font-size:14px; font-weight:700;")
+        self._legend_used_val.setStyleSheet(
+            "color:#f8fafc; font-size:15px; font-weight:800; letter-spacing:0.2px;"
+        )
         used_text_col.addWidget(used_title)
         used_text_col.addWidget(self._legend_used_val)
         used_item.addWidget(used_dot)
@@ -147,13 +152,17 @@ class DashboardPage(QWidget):
         # Item 2: Available Memory (Mint Green)
         avail_item = QHBoxLayout()
         avail_dot = QLabel("●")
-        avail_dot.setStyleSheet("color:#10b981; font-size:14px;")
+        avail_dot.setStyleSheet("color:#10b981; font-size:14px; margin-right: 6px;")
         avail_text_col = QVBoxLayout()
-        avail_text_col.setSpacing(1)
+        avail_text_col.setSpacing(2)
         avail_title = QLabel("Available Memory")
-        avail_title.setStyleSheet("color:#cbd5e1; font-size:11px; font-weight:600;")
+        avail_title.setStyleSheet(
+            "color:#94a3b8; font-size:10px; font-weight:700; letter-spacing:0.8px;"
+        )
         self._legend_avail_val = QLabel("0.0 GB")
-        self._legend_avail_val.setStyleSheet("color:#ffffff; font-size:14px; font-weight:700;")
+        self._legend_avail_val.setStyleSheet(
+            "color:#f8fafc; font-size:15px; font-weight:800; letter-spacing:0.2px;"
+        )
         avail_text_col.addWidget(avail_title)
         avail_text_col.addWidget(self._legend_avail_val)
         avail_item.addWidget(avail_dot)
@@ -255,16 +264,8 @@ class DashboardPage(QWidget):
         opt_text_col.addWidget(opt_title)
         opt_text_col.addWidget(opt_sub)
 
-        # Button
-        self._opt_btn = QPushButton("🚀  Start Optimization →")
-        self._opt_btn.setObjectName("optimize_btn")
-        self._opt_btn.setCursor(Qt.CursorShape.PointingHandCursor)
-        self._opt_btn.setFixedHeight(42)
-        self._opt_btn.clicked.connect(self._on_optimize)
-
         b_layout.addWidget(opt_icon_box)
         b_layout.addLayout(opt_text_col, 1)
-        b_layout.addWidget(self._opt_btn)
         root.addWidget(banner)
 
         # ── 4. Bottom Row: 4 Feature Cards (Matching Image Themes) ──
@@ -293,7 +294,7 @@ class DashboardPage(QWidget):
             desc="Free memory safely with a single click.",
             accent_color="#a855f7",
         )
-        feat_3.clicked.connect(lambda: self.navigate_requested.emit("optimization"))
+        feat_3.clicked.connect(self._on_one_click_optimize)
 
         feat_4 = FeatureCard(
             icon_pixmap=IconHelper.create_lock_icon(30, color="#f59e0b", bg_color="#2b1f0d"),
@@ -359,5 +360,5 @@ class DashboardPage(QWidget):
         self._footer_lbl.setText(f"Last updated: {now}  •  ● Monitoring Active")
 
     def set_optimize_enabled(self, enabled: bool) -> None:
-        self._opt_btn.setEnabled(enabled)
-        self._opt_btn.setText("🚀  Start Optimization →" if enabled else "⏳  Optimizing…")
+        # The dashboard no longer includes a Start Optimization button.
+        return

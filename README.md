@@ -28,8 +28,7 @@ RAMGuard features a modern dark-themed interface with:
 | **Graceful Shutdown** | Terminate → Wait → Kill only if needed |
 | **Startup Manager** | View and toggle Windows startup programs |
 | **Optimization History** | SQLite-backed history with full details |
-| **Settings** | Monitoring interval, thresholds, theme, mode |
-| **Dark / Light Theme** | Toggle in Settings |
+| **Settings** | Monitoring interval, thresholds, theme preference, default mode |
 
 ---
 
@@ -75,11 +74,21 @@ python main.py
 
 ---
 
+## 📦 Dependencies
+
+```
+PyQt6>=6.5.0
+psutil>=5.9.0
+```
+
+All dependencies are listed in `requirements.txt`. No additional packages are required.
+
+---
+
 ## 📁 Project Structure
 
 ```
 RAMGuard/
-│
 ├── main.py                     # Entry point
 ├── setup_dirs.py               # First-run directory setup
 ├── requirements.txt
@@ -100,7 +109,9 @@ RAMGuard/
 │   ├── history.py              # Optimization history page
 │   ├── settings.py             # Settings page
 │   ├── workers.py              # Background QThread workers
-│   └── styles.py               # Dark & light theme stylesheets
+│   ├── styles.py               # Dark theme stylesheets
+│   ├── custom_widgets.py       # Reusable custom Qt widgets
+│   └── icon_helper.py          # Process icon resolution helper
 │
 ├── database/
 │   └── database.py             # SQLite persistence (history + settings)
@@ -114,6 +125,7 @@ RAMGuard/
 │   └── system_utils.py         # Windows API helpers
 │
 ├── data/                       # SQLite database (auto-created)
+│   └── ramguard.db
 └── logs/                       # Log files (auto-created)
 ```
 
@@ -135,13 +147,14 @@ RAMGuard will **never** touch:
 
 - Windows kernel processes (`System`, `smss.exe`, `csrss.exe`, `wininit.exe`, etc.)
 - Authentication (`lsass.exe`, `winlogon.exe`)
-- Windows Defender & antimalware (`MsMpEng.exe`, `NisSrv.exe`)
+- Windows Defender & antimalware (`MsMpEng.exe`, `NisSrv.exe`, `SecurityHealthService.exe`)
 - Desktop Window Manager (`dwm.exe`)
 - Windows Explorer shell (`explorer.exe`)
-- Graphics drivers (`nvcontainer.exe`, `igfxEM.exe`)
-- Windows Update (`wuauclt.exe`, `TiWorker.exe`)
+- Graphics drivers (`nvcontainer.exe`, `igfxEM.exe`, `igfxHK.exe`)
+- Windows Update (`wuauclt.exe`, `TiWorker.exe`, `UsoClient.exe`)
+- Network stack (`netsh.exe`, `dnscache`, etc.)
 - RAMGuard itself (`python.exe`, `pythonw.exe`)
-- Any process whose name contains: `system`, `kernel`, `driver`, `security`, `defender`, `antivirus`, `windows`, `trusted`, `network`…
+- Any process whose name contains: `system`, `kernel`, `driver`, `service`, `security`, `defender`, `antivirus`, `antimalware`, `firewall`, `nvidia`, `amd`, `intel`, `realtek`, `audio`, `display`, `windows`, `microsoft`, `update`, `trusted`, `credential`, `network`, `vpn`…
 
 ---
 
@@ -159,12 +172,20 @@ Edit `config/config.json` or use the in-app Settings page:
 
 ```json
 {
+    "app_name": "RAMGuard",
+    "version": "1.0.0",
     "theme": "dark",
     "monitoring_interval_seconds": 3,
     "memory_warning_threshold_percent": 80,
     "memory_critical_threshold_percent": 90,
+    "start_with_windows": false,
+    "show_notifications": true,
     "default_optimization_mode": "SAFE",
-    "min_memory_to_recommend_mb": 100
+    "min_memory_to_recommend_mb": 100,
+    "max_history_entries": 100,
+    "custom_protected_processes": [],
+    "auto_refresh_process_list": true,
+    "process_list_refresh_interval_seconds": 5
 }
 ```
 
@@ -193,3 +214,4 @@ MIT License — Free for personal and educational use.
 RAMGuard helps manage user applications. It is **not** a RAM cleaner and does not manipulate physical memory directly. Optimization results depend on which applications you choose to close.
 
 **SAFETY > OPTIMIZATION** — RAMGuard will always prefer doing nothing over risking system instability.
+
