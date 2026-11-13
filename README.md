@@ -27,6 +27,7 @@ RAMGuard features a modern dark-themed interface with:
 | **Safety Manager** | 200+ protected system processes — never touched |
 | **Graceful Shutdown** | Terminate → Wait → Kill only if needed |
 | **Startup Manager** | View and toggle Windows startup programs |
+| **OS Memory Lab** | Interactive lab for all OS Main & Virtual Memory management algorithms |
 | **Optimization History** | SQLite-backed history with full details |
 | **Settings** | Monitoring interval, thresholds, theme preference, default mode |
 
@@ -128,6 +129,58 @@ RAMGuard/
 │   └── ramguard.db
 └── logs/                       # Log files (auto-created)
 ```
+
+---
+
+## 🧠 OS Memory Management Laboratory (Academic & Degree Project Modules)
+
+RAMGuard includes a full-fledged **OS Memory Management & Architecture Laboratory** implementing core Operating Systems curriculum concepts:
+
+### 1. Main Memory Management
+- **Memory Requirements**: Hardware simulation of Base, Limit, and Relocation registers with protection violation traps.
+- **Memory Partitioning**:
+  - **Fixed Partitioning (MFT)**: Pre-configured static partitions with Internal Fragmentation computation.
+  - **Variable Partitioning (MVT)**: Dynamic partition allocation with free hole coalescing.
+- **Dynamic Allocation Strategies**:
+  - **First Fit**: Allocates the first free hole that is large enough.
+  - **Best Fit**: Allocates the smallest free hole large enough (minimizes wasted block leftover).
+  - **Worst Fit**: Allocates the largest free hole.
+  - **Next Fit**: First fit starting from the last allocation pointer.
+- **Fragmentation & Compaction**:
+  - Internal Fragmentation: Allocated partition size minus actual process size.
+  - External Fragmentation: Scattered non-contiguous free memory detection.
+  - Memory Compaction (Defragmentation): One-click relocation of resident processes to consolidate all free holes into one large contiguous block.
+- **Swapping**: Interactive swapping simulator moving processes between Main Memory (RAM) and Backing Store (Swap/Disk), integrated with live Windows Pagefile metrics.
+
+### 2. Paging & Segmentation
+- **Paging & Address Translation**:
+  - Logical-to-Physical Address Translator: `Logical Address = (Page Number, Offset)` mapped through Page Table to `Physical Address = (Frame Number * Page Size) + Offset`.
+  - Page Table fields: Page #, Frame #, Valid/Invalid bit, Dirty bit, Reference bit, Access Rights.
+- **Segmentation & Protection**:
+  - Logical segments: Code, Data, Heap, Stack with Base and Limit registers.
+  - Hardware bounds validation: Throws **Segmentation Fault (SIGSEGV / TRAP)** if `Offset >= Limit`.
+
+### 3. Virtual Memory & Caching
+- **Demand Paging**: Lazy page swapping on demand with Page Fault detection and service routine breakdown.
+- **Page Replacement Algorithms**:
+  - **FIFO (First-In, First-Out)**: Replaces oldest loaded page; includes Belady's Anomaly preset demonstration.
+  - **LRU (Least Recently Used)**: Replaces page unused for longest time via stack/counter simulation.
+  - **Optimal (Belady's Optimal / MIN)**: Theoretical benchmark replacing page furthest in future references.
+  - **Clock (Second Chance)**: Circular list with use bit (0/1) pointer.
+  - **LFU & MFU**: Least / Most Frequently Used with reference frequency counters.
+  - Step-by-step matrix visualizer and 1-click comparative benchmark table.
+- **TLB & Caching**: Interactive Effective Memory Access Time (EMAT) calculator with sliders for TLB Hit Ratio (80% - 99%), TLB access latency, and RAM latency.
+- **Thrashing & Working Set Model**: Degree of Multiprogramming vs CPU Utilization analysis, Working Set Window ($\Delta$), and Page Fault Frequency (PFF).
+
+### 4. Advanced Kernel Memory Allocation
+- **Binary Buddy System**:
+  - Memory managed in powers-of-2 ($2^k$).
+  - Recursive splitting of larger blocks into buddies on allocation.
+  - Recursive coalescing (merging) of adjacent free buddies on deallocation.
+- **Slab Allocation**:
+  - Linux/Windows kernel object caches (`task_struct`, `mm_struct`, `inode`, `file_struct`).
+  - Slab states: **Full**, **Partial**, and **Empty**.
+  - High-speed $O(1)$ allocation eliminating internal and external fragmentation for OS kernel structures.
 
 ---
 

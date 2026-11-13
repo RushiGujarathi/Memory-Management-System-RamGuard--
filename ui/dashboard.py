@@ -264,8 +264,20 @@ class DashboardPage(QWidget):
         opt_text_col.addWidget(opt_title)
         opt_text_col.addWidget(opt_sub)
 
+        # Action Button
+        self._opt_banner_btn = QPushButton("⚡  OPTIMIZE NOW")
+        self._opt_banner_btn.setObjectName("optimize_btn")
+        self._opt_banner_btn.setFixedHeight(42)
+        self._opt_banner_btn.setFixedWidth(180)
+        self._opt_banner_btn.setCursor(Qt.CursorShape.PointingHandCursor)
+        self._opt_banner_btn.clicked.connect(self._on_one_click_optimize)
+
         b_layout.addWidget(opt_icon_box)
         b_layout.addLayout(opt_text_col, 1)
+        b_layout.addWidget(self._opt_banner_btn, 0, Qt.AlignmentFlag.AlignVCenter)
+
+        banner.setCursor(Qt.CursorShape.PointingHandCursor)
+        banner.mousePressEvent = lambda ev: self._on_one_click_optimize()
         root.addWidget(banner)
 
         # ── 4. Bottom Row: 4 Feature Cards (Matching Image Themes) ──
@@ -360,5 +372,6 @@ class DashboardPage(QWidget):
         self._footer_lbl.setText(f"Last updated: {now}  •  ● Monitoring Active")
 
     def set_optimize_enabled(self, enabled: bool) -> None:
-        # The dashboard no longer includes a Start Optimization button.
-        return
+        if hasattr(self, "_opt_banner_btn"):
+            self._opt_banner_btn.setEnabled(enabled)
+            self._opt_banner_btn.setText("⚡  OPTIMIZE NOW" if enabled else "⏳  Optimizing…")

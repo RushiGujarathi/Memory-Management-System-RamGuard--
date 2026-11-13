@@ -383,7 +383,8 @@ class StartupPage(QWidget):
         bottom_bar.addWidget(self._close_selected_btn)
         root.addLayout(bottom_bar)
 
-        self.load_entries()
+        from PyQt6.QtCore import QTimer
+        QTimer.singleShot(250, self.load_entries)
 
     # ── Data loading / filtering ─────────────────────────────────────────
     def load_entries(self) -> None:

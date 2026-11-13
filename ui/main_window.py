@@ -32,6 +32,7 @@ from ui.optimization import (
 from ui.startup import StartupPage
 from ui.history import HistoryPage
 from ui.settings import SettingsPage
+from ui.os_memory_lab import OSMemoryLabPage
 
 from utils.logger import get_logger
 
@@ -164,6 +165,7 @@ class MainWindow(QMainWindow):
         self._optimizer = MemoryOptimizer(self._safety)
         self._processes: list[ProcessInfo] = []
         self._current_page = "dashboard"
+        self._is_shutting_down = False
 
         # ── Frameless Window Flags & Sizing ──
         self.setWindowFlags(Qt.WindowType.FramelessWindowHint | Qt.WindowType.Window)
@@ -213,6 +215,7 @@ class MainWindow(QMainWindow):
         )
         self._apps_page = ApplicationsPage()
         self._opt_page = OptimizationPage()
+        self._os_lab_page = OSMemoryLabPage()
         self._startup_page = StartupPage()
         self._history_page = HistoryPage()
         self._settings_page = SettingsPage(self._config)
@@ -220,6 +223,7 @@ class MainWindow(QMainWindow):
         self._pages = {
             "dashboard":    self._dash_page,
             "applications": self._apps_page,
+            "os_lab":       self._os_lab_page,
             "optimization": self._opt_page,
             "startup":      self._startup_page,
             "history":      self._history_page,
@@ -230,6 +234,7 @@ class MainWindow(QMainWindow):
 
         # ── Wire signals ──
         self._apps_page.close_process_requested.connect(self._close_single_process)
+        self._apps_page.close_multiple_requested.connect(self._close_multiple_processes)
         self._apps_page.connect_refresh(self._start_scan)
         self._opt_page.optimize_requested.connect(self._trigger_optimization_mode)
         self._settings_page.theme_changed.connect(self._apply_theme)
@@ -250,6 +255,7 @@ class MainWindow(QMainWindow):
         nav_items = [
             ("dashboard",    "Dashboard",       IconHelper.create_home_icon(20, "#ffffff")),
             ("applications", "Applications",    IconHelper.create_grid_icon(20, "#8c9eb5")),
+            ("os_lab",       "OS Memory Lab",   IconHelper.create_chip_icon(20, color="#8c9eb5", bg_color="")),
             ("startup",      "Startup Manager", IconHelper.create_rocket_icon(20, "#8c9eb5")),
             ("history",      "History",         IconHelper.create_clock_icon(20, "#8c9eb5")),
             ("settings",     "Settings",        IconHelper.create_gear_icon(20, "#8c9eb5")),
@@ -363,6 +369,7 @@ class MainWindow(QMainWindow):
             icon_map = {
                 "dashboard":    IconHelper.create_home_icon(20, color),
                 "applications": IconHelper.create_grid_icon(20, color),
+                "os_lab":       IconHelper.create_chip_icon(20, color=color, bg_color=""),
                 "optimization": IconHelper.create_lightning_icon(20, color),
                 "startup":      IconHelper.create_rocket_icon(20, color),
                 "history":      IconHelper.create_clock_icon(20, color),
@@ -389,6 +396,12 @@ class MainWindow(QMainWindow):
         QTimer.singleShot(500, self._start_scan)
 
     def _start_scan(self) -> None:
+        if getattr(self, "_is_shutting_down", False):
+            return
+        if hasattr(self, "_scan_worker") and self._scan_worker and self._scan_worker.isRunning():
+            logger.debug("Scan already in progress, skipping duplicate trigger.")
+            return
+
         self._scan_worker = ScanWorker(self._scanner)
         self._scan_worker.scan_complete.connect(self._on_scan_complete)
         self._scan_worker.error_occurred.connect(lambda e: logger.error("Scan error: %s", e))
@@ -429,8 +442,9 @@ class MainWindow(QMainWindow):
         self._opt_page.update_processes(processes)
         logger.debug("Process list updated: %d processes", len(processes))
 
-        interval_ms = self._config.get("process_list_refresh_interval_seconds", 5) * 1000
-        QTimer.singleShot(interval_ms, self._start_scan)
+        if not getattr(self, "_is_shutting_down", False):
+            interval_ms = self._config.get("process_list_refresh_interval_seconds", 5) * 1000
+            QTimer.singleShot(interval_ms, self._start_scan)
 
     # ═══════════════════════════════════════════════════════════════
     #  Optimization Workflow
@@ -547,6 +561,34 @@ class MainWindow(QMainWindow):
 
         self._start_optimization([proc])
 
+    def _close_multiple_processes(self, procs: list[ProcessInfo]) -> None:
+        valid_procs = [p for p in procs if not p.is_protected]
+        if not valid_procs:
+            QMessageBox.warning(
+                self, "Protected Processes",
+                "All selected processes are protected and cannot be closed by RAMGuard.",
+            )
+            return
+
+        names = "\n".join(f"• {p.name} (PID {p.pid}) — {p.memory_display}" for p in valid_procs[:8])
+        if len(valid_procs) > 8:
+            names += f"\n...and {len(valid_procs) - 8} more"
+
+        total_mb = sum(p.memory_mb for p in valid_procs)
+        total_disp = f"{total_mb/1024:.1f} GB" if total_mb >= 1024 else f"{total_mb:.0f} MB"
+
+        reply = QMessageBox.question(
+            self,
+            "Confirm Close Applications",
+            f"Are you sure you want to close {len(valid_procs)} selected application(s)?\n\n"
+            f"Estimated memory recovery: ~{total_disp}\n\n"
+            f"{names}\n\n"
+            "Make sure you have saved any open work in these applications.",
+            QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
+        )
+        if reply == QMessageBox.StandardButton.Yes:
+            self._start_optimization(valid_procs)
+
     # ═══════════════════════════════════════════════════════════════
     #  Theme
     # ═══════════════════════════════════════════════════════════════
@@ -560,6 +602,10 @@ class MainWindow(QMainWindow):
 
     def closeEvent(self, event) -> None:
         logger.info("RAMGuard shutting down…")
-        if hasattr(self, "_monitor_worker"):
+        self._is_shutting_down = True
+        if hasattr(self, "_monitor_worker") and self._monitor_worker:
             self._monitor_worker.stop()
+        if hasattr(self, "_scan_worker") and self._scan_worker and self._scan_worker.isRunning():
+            self._scan_worker.quit()
+            self._scan_worker.wait(1200)
         event.accept()

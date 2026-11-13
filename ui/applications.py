@@ -200,6 +200,7 @@ class ApplicationsPage(QWidget):
     """
 
     close_process_requested = pyqtSignal(object)  # ProcessInfo
+    close_multiple_requested = pyqtSignal(list)   # list[ProcessInfo]
 
     COL_CHECK = 0
     COL_NAME = 1
@@ -229,6 +230,7 @@ class ApplicationsPage(QWidget):
         self._sort_col = self.COL_MEM
         self._sort_reverse = True  # Highest memory first by default
         self._all_checked = False
+        self._needs_repopulate = True
         self._build_ui()
 
     def _build_ui(self) -> None:
@@ -617,10 +619,22 @@ class ApplicationsPage(QWidget):
 
     def update_processes(self, processes: list[ProcessInfo]) -> None:
         self._all_processes = processes
-        self._apply_filter()
-
         now = datetime.datetime.now().strftime("%d %b %Y — %I:%M:%S %p")
         self._bottom_timestamp.setText(f"Last updated: {now}  •  ● Monitoring Active")
+
+        # Defer heavy rendering if page is currently hidden (prevents startup freeze)
+        if not self.isVisible():
+            self._needs_repopulate = True
+            return
+
+        self._needs_repopulate = False
+        self._apply_filter()
+
+    def showEvent(self, event) -> None:
+        super().showEvent(event)
+        if getattr(self, "_needs_repopulate", False):
+            self._needs_repopulate = False
+            self._apply_filter()
 
     def update_pressure_status(self, pressure_val: str) -> None:
         if "CRITICAL" in pressure_val.upper():
@@ -712,13 +726,13 @@ class ApplicationsPage(QWidget):
         self._populate_table(self._filtered_processes)
 
     def _populate_table(self, processes: list[ProcessInfo]) -> None:
-        self._table.setRowCount(len(processes))
+        self._table.setUpdatesEnabled(False)
+        self._table.blockSignals(True)
+        display_procs = processes[:100]  # Smooth 60fps rendering of top memory processes
+        self._table.setRowCount(len(display_procs))
         self._row_checkboxes.clear()
 
-        # Block signals while repopulating to avoid spurious selection-label updates
-        self._table.blockSignals(True)
-
-        for row, proc in enumerate(processes):
+        for row, proc in enumerate(display_procs):
             # Blank backing items (carry UserRole data for double-click / sort)
             for c in range(len(self.COLUMNS)):
                 blank_item = QTableWidgetItem("")
@@ -978,6 +992,7 @@ class ApplicationsPage(QWidget):
             self._table.setCellWidget(row, self.COL_ACTION, act_container)
 
         self._table.blockSignals(False)
+        self._table.setUpdatesEnabled(True)
 
     # ═══════════════════════════════════════════════════════════════
     #  Row Actions & Context Menu
@@ -1055,12 +1070,18 @@ class ApplicationsPage(QWidget):
                 item = self._table.item(idx.row(), self.COL_NAME)
                 if item:
                     proc = item.data(Qt.ItemDataRole.UserRole)
-                    if proc and not proc.is_protected:
+                    if proc and not proc.is_protected and proc not in targets:
                         targets.append(proc)
 
-        for proc in targets:
-            if not proc.is_protected:
-                self.close_process_requested.emit(proc)
+        valid_targets = [p for p in targets if not p.is_protected]
+        if not valid_targets:
+            QMessageBox.information(
+                self, "No Applications Selected",
+                "Please select one or more non-protected applications using the checkboxes or row selection."
+            )
+            return
+
+        self.close_multiple_requested.emit(valid_targets)
 
     def _get_checked_processes(self) -> list[ProcessInfo]:
         targets = []

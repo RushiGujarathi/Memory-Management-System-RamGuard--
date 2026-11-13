@@ -118,20 +118,23 @@ class ProcessScanner:
     ) -> Optional[ProcessInfo]:
         """Build a ProcessInfo for a single psutil.Process, or None on failure."""
         try:
-            info = proc.as_dict(attrs=[
-                "pid", "name", "exe", "memory_info", "status",
-                "create_time", "username", "num_threads", "cmdline",
-            ])
+            info = getattr(proc, "info", None)
+            if not info:
+                info = proc.as_dict(attrs=[
+                    "pid", "name", "exe", "memory_info", "status",
+                    "create_time", "username", "num_threads", "cmdline",
+                ])
 
-            pid: int = info.get("pid", 0)
-            name: str = info.get("name") or "Unknown"
-            exe: Optional[str] = info.get("exe")
             mem_info = info.get("memory_info")
             memory_bytes: int = mem_info.rss if mem_info else 0
             memory_mb: float = memory_bytes / (1024 * 1024)
 
             if memory_mb < min_memory_mb:
                 return None
+
+            pid: int = info.get("pid", 0)
+            name: str = info.get("name") or "Unknown"
+            exe: Optional[str] = info.get("exe")
 
             # CPU percent — non-blocking (may return 0.0 on first call)
             try:
